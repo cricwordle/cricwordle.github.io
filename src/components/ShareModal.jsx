@@ -58,7 +58,7 @@ function ShareModal({
       ? "X"
       : guesses.length;
 
-  const shareText = `Women's Cricket Wordle ${tries}/${maxAttempts}\n\n${getPattern()}\n\nCheck it out: https://cricwordle.github.io/`;
+  const shareText = `Women's Cricket Wordle ${tries}/${maxAttempts}\n\n${getPattern()}\n\nhttps://cricwordle.github.io/`;
 
   const copyToClipboard = () => {
     const fallbackCopy = () => {
