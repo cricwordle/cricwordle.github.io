@@ -58,7 +58,7 @@ function ShareModal({
       ? "X"
       : guesses.length;
 
-  const shareText = `Women's Cricket Wordle ${tries}/${maxAttempts}\n\n${getPattern()}\n\nCheck it out: ${window.location.href}`;
+  const shareText = `Women's Cricket Wordle ${tries}/${maxAttempts}\n\n${getPattern()}\n\nCheck it out: https://cricwordle.github.io/ https://cricwordle.github.io/`;
 
   const copyToClipboard = () => {
     const fallbackCopy = () => {
@@ -104,14 +104,31 @@ function ShareModal({
         </p>
 
         <pre className="pattern">{shareText}</pre>
-
+        <button
+          className="share-main-btn"
+          onClick={() => {
+            if (navigator.share) {
+              navigator
+                .share({
+                  title: "Women's Cricket Wordle",
+                  text: shareText,
+                  url: window.location.href,
+                })
+                .catch((err) => console.error("Error sharing:", err));
+            } else {
+              copyToClipboard();
+              alert("Sharing not supported on this device. Use the Copy Link button instead!");
+            }
+          }}
+        >
+          Share
+        </button>
         <button
           onClick={copyToClipboard}
           className={`copy-btn ${copied ? "copied" : ""}`}
         >
           {copied ? "Copied!" : "Copy Link"}
         </button>
-
         <button onClick={onClose} className="close-btn">
           Close
         </button>

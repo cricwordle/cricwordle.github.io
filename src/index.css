@@ -589,3 +589,17 @@ footer .developer-credit {
   font-size: 16px; /* adjust as needed */
   margin-right: 4px;
 }
+
+/* Make Share, Copy, and Close buttons uniform on mobile */
+@media (max-width: 600px) {
+  .share-main-btn,
+  .copy-btn,
+  .close-btn {
+    width: 100%;        /* stretch full width */
+    padding: 14px;      /* consistent height/tappable area */
+    font-size: 14px;    /* match text size */
+    border-radius: 8px; /* same rounded corners */
+    box-sizing: border-box;
+    text-align: center; /* center text */
+  }
+}
