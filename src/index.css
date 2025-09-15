@@ -603,3 +603,64 @@ footer .developer-credit {
     text-align: center; /* center text */
   }
 }
+
+/* Flat, compact style for all screens */
+.guess-cell {
+  border-radius: 0;     /* remove rounded corners */
+  padding: 3px 4px;     /* tighter padding to save space */
+  font-size: 0.85rem;   /* slightly smaller text for compactness */
+}
+
+.guess-row {
+  gap: 0px;             /* reduce spacing between cells */
+}
+/* Remove border radius for header and guess cells on desktop and mobile */
+.guess-cell {
+  border-radius: 0 !important; /* remove rounded corners */
+}
+@media (max-width: 600px) {
+  .guess-cell {
+    border-radius: 0 !important;
+  }
+}
+/* Make guess grid more compact */
+.guess-row {
+  gap: 0; /* remove extra space between columns */
+  margin-bottom: 2px; /* reduce space between rows */
+}
+
+.guess-cell {
+  padding: 4px 6px; /* reduce cell padding */
+  border-radius: 0 !important; /* no rounded corners */
+  font-size: 13px; /* slightly smaller text */
+}
+@media (max-width: 600px) {
+  .guess-row {
+    gap: 0; /* remove horizontal gap */
+    margin-bottom: 1px; /* minimal row spacing */
+  }
+
+  .guess-cell {
+    padding: 2px 4px; /* super compact */
+    font-size: 11px; /* smaller text for mobile */
+    border-radius: 0 !important;
+  }
+}
+
+.guess-cell {
+  padding: 6px 8px;     /* increase vertical/horizontal padding */
+  min-height: 36px;     /* set a minimum height */
+  border-radius: 0 !important; /* keep corners square */
+  font-size: 13px;      /* adjust text size */
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 600px) {
+  .guess-row > .guess-cell:first-child,
+  .mobile-header > .guess-cell:first-child {
+    padding: 4px 6px;    /* a bit more than before */
+    font-size: 12px;     /* slightly larger for readability */
+    min-height: 30px;    /* taller player name box */
+  }
+}
+

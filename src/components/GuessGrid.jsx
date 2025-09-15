@@ -111,7 +111,7 @@ function GuessGrid({ guesses, mysteryPlayer }) {
           <div className="guess-cell">Batting Hand</div>
           <div className="guess-cell">Intl Matches</div>
           <div className="guess-cell"
-          >Team</div>
+          >WPL</div>
         </div>
 
         {/* Guesses */}
