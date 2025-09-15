@@ -276,8 +276,8 @@ function App() {
             <img
               src={
                 showPlayer
-                  ? mysteryPlayer.image || "images/silhouette.png"
-                  : "images/silhouette.png"
+                  ? mysteryPlayer.image || "/images/silhouette.png"
+                  : "/images/silhouette.png"
               }
               alt="Mystery Player"
               className="player-image"
