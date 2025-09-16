@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Flag from "react-world-flags";
 
 function GuessGrid({ guesses, mysteryPlayer }) {
   if (!mysteryPlayer) return null;
 
-  // Map nation names to flag emojis
   const getFlagCode = (nation) => {
     const map = {
       India: "IN",
@@ -16,8 +15,27 @@ function GuessGrid({ guesses, mysteryPlayer }) {
       "Sri Lanka": "LK",
       Bangladesh: "BD",
     };
-    return map[nation] || null; // return null if not in the map
+    return map[nation] || null;
   };
+
+  // 🔹 New state for flip animation
+  const [revealingRow, setRevealingRow] = useState(null);
+
+  useEffect(() => {
+    if (guesses.length > 0) {
+      const lastRowIndex = guesses.length - 1;
+      setRevealingRow(lastRowIndex);
+
+      // number of columns in this row
+      const totalColumns = Object.keys(guesses[lastRowIndex]).length;
+      const totalDuration = totalColumns * 150 + 600; // match CSS animation delay + duration
+
+      const timeout = setTimeout(() => setRevealingRow(null), totalDuration);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [guesses]);
+
 
   const getBornArrow = (guess) => {
     const guessedYear = new Date(guess.born).getFullYear();
@@ -41,18 +59,11 @@ function GuessGrid({ guesses, mysteryPlayer }) {
       case "retired":
         return guess.retired === mysteryPlayer.retired ? "green" : "grey";
       case "battingHand":
-        return guess.battingHand === mysteryPlayer.battingHand
-          ? "green"
-          : "grey";
+        return guess.battingHand === mysteryPlayer.battingHand ? "green" : "grey";
       case "currentTeam":
-        return guess.currentTeam === mysteryPlayer.currentTeam
-          ? "green"
-          : "grey";
+        return guess.currentTeam === mysteryPlayer.currentTeam ? "green" : "grey";
       case "born": {
-        const diff = Math.abs(
-          new Date(guess.born).getFullYear() -
-            new Date(mysteryPlayer.born).getFullYear(),
-        );
+        const diff = Math.abs(new Date(guess.born).getFullYear() - new Date(mysteryPlayer.born).getFullYear());
         if (diff === 0) return "green";
         if (diff <= 2) return "orange";
         return "grey";
@@ -71,10 +82,7 @@ function GuessGrid({ guesses, mysteryPlayer }) {
   const getTooltip = (guess, key) => {
     switch (key) {
       case "born": {
-        const diff = Math.abs(
-          new Date(guess.born).getFullYear() -
-            new Date(mysteryPlayer.born).getFullYear(),
-        );
+        const diff = Math.abs(new Date(guess.born).getFullYear() - new Date(mysteryPlayer.born).getFullYear());
         return diff > 0 ? `Year difference: ${diff}` : null;
       }
       case "totalMatches": {
@@ -86,11 +94,15 @@ function GuessGrid({ guesses, mysteryPlayer }) {
     }
   };
 
-  const renderCell = (guess, key, content) => {
+  // 🔹 Updated renderCell for animation
+  const renderCell = (guess, key, content, colIndex, rowIndex) => {
     const tooltip = getTooltip(guess, key);
     return (
       <div
-        className={`guess-cell flip ${getCellColor(guess, key)}`}
+        className={`guess-cell flip ${getCellColor(guess, key)} ${
+          revealingRow === rowIndex ? "revealing" : ""
+        }`}
+        style={{ "--cell-index": colIndex }}
         {...(tooltip && { "data-tooltip": tooltip })}
       >
         {content}
@@ -101,7 +113,6 @@ function GuessGrid({ guesses, mysteryPlayer }) {
   return (
     <div className="guess-grid-wrapper">
       <div className="guess-grid">
-        {/* Header row */}
         <div className="guess-row header mobile-header">
           <div className="guess-cell">Player Name</div>
           <div className="guess-cell">Nation</div>
@@ -110,14 +121,12 @@ function GuessGrid({ guesses, mysteryPlayer }) {
           <div className="guess-cell">Born</div>
           <div className="guess-cell">Batting Hand</div>
           <div className="guess-cell">Intl Matches</div>
-          <div className="guess-cell"
-          >WPL</div>
+          <div className="guess-cell">WPL</div>
         </div>
 
-        {/* Guesses */}
-        {guesses.map((guess, index) => (
-          <div key={index} className="guess-row">
-            {renderCell(guess, "name", guess.name)}
+        {guesses.map((guess, rowIndex) => (
+          <div key={rowIndex} className="guess-row">
+            {renderCell(guess, "name", guess.name, 0, rowIndex)}
             {renderCell(
               guess,
               "nation",
@@ -148,19 +157,17 @@ function GuessGrid({ guesses, mysteryPlayer }) {
                   {guess.nation}
                 </span>
               </div>,
+              1,
+              rowIndex
             )}
-            {renderCell(guess, "role", guess.role)}
-            {renderCell(guess, "retired", guess.retired)}
-            {renderCell(
-              guess,
-              "born",
-              <>
-                {new Date(guess.born).getFullYear()} {getBornArrow(guess)}
-              </>,
-            )}
-            {renderCell(guess, "battingHand", guess.battingHand)}
-            {renderCell(guess, "totalMatches", guess.totalMatches)}
-            {renderCell(guess, "currentTeam", guess.currentTeam)}
+            {renderCell(guess, "role", guess.role, 2, rowIndex)}
+            {renderCell(guess, "retired", guess.retired, 3, rowIndex)}
+            {renderCell(guess, "born", <>
+              {new Date(guess.born).getFullYear()} {getBornArrow(guess)}
+            </>, 4, rowIndex)}
+            {renderCell(guess, "battingHand", guess.battingHand, 5, rowIndex)}
+            {renderCell(guess, "totalMatches", guess.totalMatches, 6, rowIndex)}
+            {renderCell(guess, "currentTeam", guess.currentTeam, 7, rowIndex)}
           </div>
         ))}
       </div>

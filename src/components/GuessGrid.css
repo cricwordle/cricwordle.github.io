@@ -68,3 +68,91 @@
   display: inline-block;
   margin-left: 2px;
 }
+.guess-cell.flip.revealing {
+  animation: flipReveal 0.6s forwards;
+  animation-delay: calc(var(--cell-index) * 0.15s);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+@keyframes flipReveal {
+  0% {
+    transform: rotateX(90deg);
+    opacity: 0;
+  }
+  50% {
+    transform: rotateX(-20deg);
+    opacity: 1;
+  }
+  100% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+}
+.guess-row {
+  display: flex; 
+  gap: 5px;
+  flex: 0 0 auto;
+  perspective: 800px; /* add this line */
+}
+/* 🔹 Perspective for 3D flip */
+.guess-row {
+  perspective: 800px; /* ensures children can flip in 3D */
+}
+
+/* 🔹 Flip animation for revealing cells */
+.guess-cell.flip.revealing {
+  display: inline-block; /* required for 3D transform */
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  animation: flipReveal 0.6s forwards;
+  animation-delay: calc(var(--cell-index) * 0.15s);
+}
+
+/* 🔹 Keyframes for flip animation */
+@keyframes flipReveal {
+  0% {
+    transform: rotateX(90deg);
+    opacity: 0;
+  }
+  50% {
+    transform: rotateX(-20deg);
+    opacity: 1;
+  }
+  100% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+}
+/* ------------------ Flip animation for each cell ------------------ */
+.guess-cell.flip.revealing {
+  display: inline-block;          /* necessary for transform */
+  transform-style: preserve-3d;   /* enable 3D transform */
+  backface-visibility: hidden;    /* hide back side */
+  animation: flipReveal 0.6s forwards;
+  animation-delay: calc(var(--cell-index) * 0.15s); /* stagger flip per column */
+}
+
+/* 🔹 Keyframes for flip */
+@keyframes flipReveal {
+  0% {
+    transform: rotateX(90deg);
+    opacity: 0;
+  }
+  50% {
+    transform: rotateX(-20deg);
+    opacity: 1;
+  }
+  100% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+/* Perspective for 3D effect on row */
+.guess-row {
+  display: flex;
+  gap: 5px;
+  flex: 0 0 auto;
+  perspective: 800px; /* critical for individual cell flips */
+}

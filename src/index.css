@@ -663,4 +663,26 @@ footer .developer-credit {
     min-height: 30px;    /* taller player name box */
   }
 }
+.guess-cell.flip.revealing {
+  animation: flipReveal 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: calc(var(--cell-index) * 0.2s); /* stagger like Wordle */
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+@keyframes flipReveal {
+  0% {
+    transform: rotateX(90deg);
+    opacity: 0;
+  }
+  50% {
+    transform: rotateX(-10deg);
+    opacity: 1;
+  }
+  100% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+}
+
 
