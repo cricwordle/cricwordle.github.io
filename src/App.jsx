@@ -113,6 +113,11 @@ function App() {
     const annotatedPlayer = annotateGuess(player);
     const newGuesses = [...guesses, annotatedPlayer];
     setGuesses(newGuesses);
+    // 🟢 Hide mobile keyboard
+    if (inputRef.current) inputRef.current.blur();
+    // 🟢 Scroll latest guess into view
+    const lastRow = document.querySelector(".guess-row:last-child");
+    if (lastRow) lastRow.scrollIntoView({ behavior: "smooth", block: "center" });    
     setGuessInput("");
 
     if (player.name === mysteryPlayer.name) {

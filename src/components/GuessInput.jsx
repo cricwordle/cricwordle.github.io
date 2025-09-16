@@ -31,7 +31,7 @@ export default function GuessInput({
     setValue(""); // reset input
     setFilteredPlayers([]); // close autocomplete
     setHighlightIndex(-1);
-    inputRef.current?.focus();
+    inputRef.current?.blur();
   };
 
   const handleKeyDown = (e) => {
