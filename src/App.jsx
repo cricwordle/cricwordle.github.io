@@ -54,11 +54,22 @@ function App() {
     }, 1000);
     return () => clearInterval(interval);
   }, []);
-
   const pickRandomPlayer = () => {
+      // 🚫 Stop starting a 4th game if daily limit reached
+      if (!DISABLE_LIMIT && gamesPlayedToday >= MAX_GAMES_PER_DAY) {
+        setHideLimitMessage(false); // show overlay
+        return; // prevent picking a new mystery player
+      }
     const randomIndex = Math.floor(Math.random() * players.length);
     setMysteryPlayer(players[randomIndex]);
+    setGuesses([]);
   };
+      const resetGame = () => {
+      pickRandomPlayer();   // picks a new player and clears guesses
+      setShowPlayer(false); // hide the previous answer
+      setShowShare(false);  // close share modal
+      setCelebrate(false);  // stop confetti
+    };
 
   const incrementGamesPlayed = () => {
     if (DISABLE_LIMIT) return;
@@ -100,7 +111,7 @@ function App() {
 
   const handleGuess = (guessName) => {
     // 🚨 Stop and show overlay if daily limit reached
-    if (!DISABLE_LIMIT && gamesPlayedToday >= MAX_GAMES_PER_DAY) {
+    if (!DISABLE_LIMIT && gamesPlayedToday >= MAX_GAMES_PER_DAY &&  guesses.length === 0) {
       setHideLimitMessage(false); // ensure overlay is visible again
       return;
     }
@@ -142,7 +153,7 @@ function App() {
   const limitReached =
     !DISABLE_LIMIT &&
     gamesPlayedToday >= MAX_GAMES_PER_DAY &&
-    !hideLimitMessage;
+    guesses.length === 0 && !hideLimitMessage;
 
   return (
     <div className="container">
@@ -322,27 +333,61 @@ function App() {
         </>
       )}
 
-      <button
-        onClick={() => setShowShare(true)}
-        style={{
-          background: "linear-gradient(135deg, #3949ab, #5c6bc0)",
-          color: "white",
-          padding: "12px 24px",
-          fontSize: "16px",
-          fontWeight: "bold",
-          border: "none",
-          borderRadius: "8px",
-          cursor: "pointer",
-          boxShadow: "0 2px 6px rgba(0,0,0,0.15)",
-          transition: "all 0.3s ease",
-        }}
-        onMouseOver={(e) =>
-          (e.currentTarget.style.transform = "translateY(-2px)")
-        }
-        onMouseOut={(e) => (e.currentTarget.style.transform = "translateY(0)")}
-      >
-        Share my score
-      </button>
+{(showPlayer || guesses.length === MAX_ATTEMPTS) && (
+      <div
+  style={{
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    gap: "8px",
+    marginTop: "16px",
+    flexWrap: "wrap",
+  }}
+>
+  <button
+    onClick={() => setShowShare(true)}
+    style={{
+      flex: "0 1 140px",
+      padding: "12px 0",
+      fontSize: "14px",
+      fontWeight: "bold",
+      borderRadius: "8px",
+      border: "none",
+      cursor: "pointer",
+      background: "linear-gradient(135deg, #3949ab, #5c6bc0)",
+      color: "white",
+      boxShadow: "0 2px 6px rgba(0,0,0,0.15)",
+      transition: "all 0.3s ease",
+    }}
+    onMouseOver={(e) => (e.currentTarget.style.transform = "translateY(-2px)")}
+    onMouseOut={(e) => (e.currentTarget.style.transform = "translateY(0)")}
+  >
+    Share my score
+  </button>
+
+  <button
+    onClick={resetGame}
+    style={{
+      flex: "0 1 140px", // make same width as share button
+      padding: "8px 0",
+      fontSize: "14px",
+      fontWeight: "bold",
+      borderRadius: "8px",
+      border: "none",
+      cursor: "pointer",
+      background: "linear-gradient(135deg, #43a047, #66bb6a)",
+      color: "white",
+      boxShadow: "0 2px 6px rgba(0,0,0,0.15)",
+      transition: "all 0.3s ease",
+    }}
+    onMouseOver={(e) => (e.currentTarget.style.transform = "translateY(-2px)")}
+    onMouseOut={(e) => (e.currentTarget.style.transform = "translateY(0)")}
+  >
+    Play Again
+  </button>
+</div>
+)}
+
 
       <ShareModal
         show={showShare}
@@ -350,6 +395,7 @@ function App() {
         guesses={guesses}
         mysteryPlayer={mysteryPlayer}
         maxAttempts={MAX_ATTEMPTS}
+        onPlayAgain={resetGame}
       />
       <footer
         style={{

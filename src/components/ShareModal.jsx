@@ -9,6 +9,7 @@ function ShareModal({
   guesses,
   mysteryPlayer,
   maxAttempts = 8,
+  onPlayAgain 
 }) {
   const [copied, setCopied] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
@@ -134,6 +135,27 @@ function ShareModal({
           }}
         >
           Share
+        </button>
+        {/* Play Again Button */}
+        <button
+          className="copy-btn"
+          onClick={() => {
+          onPlayAgain();   // <-- call resetGame from parent
+          onClose();       // <-- close modal
+        }}
+          style={{
+            marginTop: "10px",
+            width: "100%",
+            padding: "12px",
+            fontSize: "16px",
+            background: "#4caf50",
+            color: "white",
+            border: "none",
+            borderRadius: "8px",
+            cursor: "pointer",
+          }}
+        >
+          Play Again
         </button>
         <button
           onClick={copyToClipboard}
