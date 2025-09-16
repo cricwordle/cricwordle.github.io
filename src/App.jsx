@@ -22,6 +22,7 @@ function App() {
   const [gamesPlayedToday, setGamesPlayedToday] = useState(0);
   const [timeUntilReset, setTimeUntilReset] = useState("");
   const [hideLimitMessage, setHideLimitMessage] = useState(false);
+  const [gamesPlayed, setGamesPlayed] = useState(0);
 
   const inputRef = useRef(null);
 
@@ -41,35 +42,46 @@ function App() {
       const diff = tomorrow - now;
       const hours = String(Math.floor(diff / (1000 * 60 * 60))).padStart(
         2,
-        "0",
+        "0"
       );
       const minutes = String(
-        Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
+        Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
       ).padStart(2, "0");
       const seconds = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(
         2,
-        "0",
+        "0"
       );
       setTimeUntilReset(`${hours}:${minutes}:${seconds}`);
     }, 1000);
     return () => clearInterval(interval);
   }, []);
   const pickRandomPlayer = () => {
-      // 🚫 Stop starting a 4th game if daily limit reached
-      if (!DISABLE_LIMIT && gamesPlayedToday >= MAX_GAMES_PER_DAY) {
-        setHideLimitMessage(false); // show overlay
-        return; // prevent picking a new mystery player
-      }
+    // 🚫 Stop starting a 4th game if daily limit reached
+    if (!DISABLE_LIMIT && gamesPlayedToday >= MAX_GAMES_PER_DAY) {
+      setHideLimitMessage(false); // show overlay
+      return; // prevent picking a new mystery player
+    }
     const randomIndex = Math.floor(Math.random() * players.length);
     setMysteryPlayer(players[randomIndex]);
     setGuesses([]);
   };
-      const resetGame = () => {
-      pickRandomPlayer();   // picks a new player and clears guesses
-      setShowPlayer(false); // hide the previous answer
-      setShowShare(false);  // close share modal
-      setCelebrate(false);  // stop confetti
-    };
+  // Modify your existing resetGame
+  const resetGame = () => {
+    if (gamesPlayed >= MAX_GAMES_PER_DAY) {
+      // Show max limit popup instead of resetting
+      setShowShare(true); // Reopen the ShareModal with the limit message
+      return;
+    }
+
+    // Increment games played
+    setGamesPlayed((prev) => prev + 1);
+
+    // ✅ Your existing logic (kept as-is)
+    pickRandomPlayer(); // picks a new player and clears guesses
+    setShowPlayer(false); // hide the previous answer
+    setShowShare(false); // close share modal
+    setCelebrate(false); // stop confetti
+  };
 
   const incrementGamesPlayed = () => {
     if (DISABLE_LIMIT) return;
@@ -96,8 +108,7 @@ function App() {
       player.currentTeam === mystery.currentTeam ? "green" : "grey";
 
     const bornDiff = Math.abs(
-      new Date(player.born).getFullYear() -
-        new Date(mystery.born).getFullYear(),
+      new Date(player.born).getFullYear() - new Date(mystery.born).getFullYear()
     );
     annotated.colors.born =
       bornDiff === 0 ? "green" : bornDiff <= 2 ? "orange" : "grey";
@@ -111,13 +122,17 @@ function App() {
 
   const handleGuess = (guessName) => {
     // 🚨 Stop and show overlay if daily limit reached
-    if (!DISABLE_LIMIT && gamesPlayedToday >= MAX_GAMES_PER_DAY &&  guesses.length === 0) {
+    if (
+      !DISABLE_LIMIT &&
+      gamesPlayedToday >= MAX_GAMES_PER_DAY &&
+      guesses.length === 0
+    ) {
       setHideLimitMessage(false); // ensure overlay is visible again
       return;
     }
 
     const player = players.find(
-      (p) => p.name.toLowerCase() === guessName.toLowerCase(),
+      (p) => p.name.toLowerCase() === guessName.toLowerCase()
     );
     if (!player) return alert("Player not found!");
 
@@ -128,7 +143,8 @@ function App() {
     if (inputRef.current) inputRef.current.blur();
     // 🟢 Scroll latest guess into view
     const lastRow = document.querySelector(".guess-row:last-child");
-    if (lastRow) lastRow.scrollIntoView({ behavior: "smooth", block: "center" });    
+    if (lastRow)
+      lastRow.scrollIntoView({ behavior: "smooth", block: "center" });
     setGuessInput("");
 
     if (player.name === mysteryPlayer.name) {
@@ -153,7 +169,8 @@ function App() {
   const limitReached =
     !DISABLE_LIMIT &&
     gamesPlayedToday >= MAX_GAMES_PER_DAY &&
-    guesses.length === 0 && !hideLimitMessage;
+    guesses.length === 0 &&
+    !hideLimitMessage;
 
   return (
     <div className="container">
@@ -333,61 +350,68 @@ function App() {
         </>
       )}
 
-{(showPlayer || guesses.length === MAX_ATTEMPTS) && (
-      <div
-  style={{
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-    gap: "8px",
-    marginTop: "16px",
-    flexWrap: "wrap",
-  }}
->
-  <button
-    onClick={() => setShowShare(true)}
-    style={{
-      flex: "0 1 140px",
-      padding: "12px 0",
-      fontSize: "14px",
-      fontWeight: "bold",
-      borderRadius: "8px",
-      border: "none",
-      cursor: "pointer",
-      background: "linear-gradient(135deg, #3949ab, #5c6bc0)",
-      color: "white",
-      boxShadow: "0 2px 6px rgba(0,0,0,0.15)",
-      transition: "all 0.3s ease",
-    }}
-    onMouseOver={(e) => (e.currentTarget.style.transform = "translateY(-2px)")}
-    onMouseOut={(e) => (e.currentTarget.style.transform = "translateY(0)")}
-  >
-    Share my score
-  </button>
+      {(showPlayer || guesses.length === MAX_ATTEMPTS) && (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            gap: "8px",
+            marginTop: "16px",
+            flexWrap: "wrap",
+          }}
+        >
+          <button
+            onClick={() => setShowShare(true)}
+            style={{
+              flex: "0 1 140px",
+              padding: "12px 0",
+              fontSize: "14px",
+              fontWeight: "bold",
+              borderRadius: "8px",
+              border: "none",
+              cursor: "pointer",
+              background: "linear-gradient(135deg, #3949ab, #5c6bc0)",
+              color: "white",
+              boxShadow: "0 2px 6px rgba(0,0,0,0.15)",
+              transition: "all 0.3s ease",
+            }}
+            onMouseOver={(e) =>
+              (e.currentTarget.style.transform = "translateY(-2px)")
+            }
+            onMouseOut={(e) =>
+              (e.currentTarget.style.transform = "translateY(0)")
+            }
+          >
+            Share my score
+          </button>
 
-  <button
-    onClick={resetGame}
-    style={{
-      flex: "0 1 140px", // make same width as share button
-      padding: "8px 0",
-      fontSize: "14px",
-      fontWeight: "bold",
-      borderRadius: "8px",
-      border: "none",
-      cursor: "pointer",
-      background: "linear-gradient(135deg, #43a047, #66bb6a)",
-      color: "white",
-      boxShadow: "0 2px 6px rgba(0,0,0,0.15)",
-      transition: "all 0.3s ease",
-    }}
-    onMouseOver={(e) => (e.currentTarget.style.transform = "translateY(-2px)")}
-    onMouseOut={(e) => (e.currentTarget.style.transform = "translateY(0)")}
-  >
-    Play Again
-  </button>
-</div>
-)}
-
+          <button
+            onClick={resetGame}
+            style={{
+              flex: "0 1 140px", // make same width as share button
+              padding: "8px 0",
+              fontSize: "14px",
+              fontWeight: "bold",
+              borderRadius: "8px",
+              border: "none",
+              cursor: "pointer",
+              background: "linear-gradient(135deg, #43a047, #66bb6a)",
+              color: "white",
+              boxShadow: "0 2px 6px rgba(0,0,0,0.15)",
+              transition: "all 0.3s ease",
+            }}
+            onMouseOver={(e) =>
+              (e.currentTarget.style.transform = "translateY(-2px)")
+            }
+            onMouseOut={(e) =>
+              (e.currentTarget.style.transform = "translateY(0)")
+            }
+          >
+            Play Again
+          </button>
+        </div>
+      )}
 
       <ShareModal
         show={showShare}
@@ -396,6 +420,8 @@ function App() {
         mysteryPlayer={mysteryPlayer}
         maxAttempts={MAX_ATTEMPTS}
         onPlayAgain={resetGame}
+        gamesPlayed={gamesPlayed}
+        maxGames={MAX_GAMES_PER_DAY}
       />
       <footer
         style={{

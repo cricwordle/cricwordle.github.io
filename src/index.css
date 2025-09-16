@@ -595,9 +595,9 @@ footer .developer-credit {
   .share-main-btn,
   .copy-btn,
   .close-btn {
-    width: 100%;        /* stretch full width */
-    padding: 14px;      /* consistent height/tappable area */
-    font-size: 14px;    /* match text size */
+    width: 100%; /* stretch full width */
+    padding: 14px; /* consistent height/tappable area */
+    font-size: 14px; /* match text size */
     border-radius: 8px; /* same rounded corners */
     box-sizing: border-box;
     text-align: center; /* center text */
@@ -606,13 +606,13 @@ footer .developer-credit {
 
 /* Flat, compact style for all screens */
 .guess-cell {
-  border-radius: 0;     /* remove rounded corners */
-  padding: 3px 4px;     /* tighter padding to save space */
-  font-size: 0.85rem;   /* slightly smaller text for compactness */
+  border-radius: 0; /* remove rounded corners */
+  padding: 3px 4px; /* tighter padding to save space */
+  font-size: 0.85rem; /* slightly smaller text for compactness */
 }
 
 .guess-row {
-  gap: 0px;             /* reduce spacing between cells */
+  gap: 0px; /* reduce spacing between cells */
 }
 /* Remove border radius for header and guess cells on desktop and mobile */
 .guess-cell {
@@ -648,19 +648,19 @@ footer .developer-credit {
 }
 
 .guess-cell {
-  padding: 6px 8px;     /* increase vertical/horizontal padding */
-  min-height: 36px;     /* set a minimum height */
+  padding: 6px 8px; /* increase vertical/horizontal padding */
+  min-height: 36px; /* set a minimum height */
   border-radius: 0 !important; /* keep corners square */
-  font-size: 13px;      /* adjust text size */
+  font-size: 13px; /* adjust text size */
 }
 
 /* Mobile-specific adjustments */
 @media (max-width: 600px) {
   .guess-row > .guess-cell:first-child,
   .mobile-header > .guess-cell:first-child {
-    padding: px 6px;    /* a bit more than before */
-    font-size: 13px;     /* slightly larger for readability */
-    min-height: 30px;    /* taller player name box */
+    padding: 2px 6px; /* a bit more than before */
+    font-size: 13px; /* slightly larger for readability */
+    min-height: 30px; /* taller player name box */
   }
 }
 .guess-cell.flip.revealing {
@@ -703,33 +703,33 @@ footer .developer-credit {
     padding-bottom: 80px; /* enough space for sticky input */
   }
 }
-  .guess-row:not(.header) .guess-cell {
-    font-size: 16px; 
-    font-weight: 500;
-    text-align: center; /* center text for all by default */
-  }
+.guess-row:not(.header) .guess-cell {
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center; /* center text for all by default */
+}
 
-  /* Role column adjustments */
-  .guess-row:not(.header) .guess-cell:nth-child(3) {
-    font-size: 16px;      /* slightly smaller */
-    font-weight: 400;     /* lighter */
-    padding: 4px 6px;
-    min-height: 50px;     /* taller box if needed */
-  }
+/* Role column adjustments */
+.guess-row:not(.header) .guess-cell:nth-child(3) {
+  font-size: 16px; /* slightly smaller */
+  font-weight: 400; /* lighter */
+  padding: 4px 6px;
+  min-height: 50px; /* taller box if needed */
+}
 @media (max-width: 600px) {
   /* Bigger text for guessed answers, centered for all except Role */
   .guess-row:not(.header) .guess-cell {
-    font-size: 13px; 
+    font-size: 13px;
     font-weight: 500;
     text-align: center; /* center text for all by default */
   }
 
   /* Role column adjustments */
   .guess-row:not(.header) .guess-cell:nth-child(3) {
-    font-size: 10px;      /* slightly smaller */
-    font-weight: 400;     /* lighter */
+    font-size: 10px; /* slightly smaller */
+    font-weight: 400; /* lighter */
     padding: 4px 6px;
-    min-height: 50px;     /* taller box if needed */
+    min-height: 50px; /* taller box if needed */
   }
 }
 
@@ -822,14 +822,14 @@ footer .developer-credit {
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 }
 
 /* Hover effect */
 .play-again-button:hover,
 .share-play-again-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Specific colors */
@@ -852,7 +852,32 @@ footer .developer-credit {
     padding: 16px 0;
   }
 }
+/* 📱 Mobile-only styles */
+@media (max-width: 600px) {
+  /* Center text vertically and horizontally inside all guess-cells */
+  .guess-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
 
-
-
-
+  /* Left-align only the Player Name column (first cell of non-header rows) */
+  .guess-row:not(.mobile-header) .guess-cell:first-child {
+    justify-content: flex-start;
+    text-align: left;
+    padding-left: 8px; /* small spacing */
+  }
+}
+/* ✅ Mobile-only: left-align the Player Name cell from 2nd row onward */
+@media (max-width: 600px) {
+  .guess-row:not(.mobile-header) .guess-cell:first-child {
+    text-align: left;
+  }
+  /* Left-align Player Name in all rows (including header) */
+  .guess-row .guess-cell:first-child {
+    justify-content: flex-start;
+    text-align: left;
+    padding-left: 10px; /* small spacing */
+  }
+}

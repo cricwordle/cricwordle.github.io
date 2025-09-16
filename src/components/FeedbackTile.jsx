@@ -10,7 +10,7 @@ function FeedbackTile({ label, value, mysteryValue }) {
   } else if (
     (label === "Born" &&
       Math.abs(
-        new Date(value).getFullYear() - new Date(mysteryValue).getFullYear(),
+        new Date(value).getFullYear() - new Date(mysteryValue).getFullYear()
       ) <= 1) ||
     (label === "Total Matches" && Math.abs(value - mysteryValue) <= 5)
   ) {

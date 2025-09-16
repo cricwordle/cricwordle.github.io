@@ -22,7 +22,7 @@ function ShareButton({ guesses, mysteryPlayer }) {
             if (player[field] !== mysteryPlayer[field]) return "🟨";
             return "⬜";
           })
-          .join(""),
+          .join("")
       )
       .join("\n");
 

@@ -713,7 +713,7 @@ players.push(
     totalMatches: 176,
     currentTeam: "—",
     image: "",
-  },
+  }
 );
 // -------- Batch 2: Additional Players --------
 players.push(
@@ -892,7 +892,7 @@ players.push(
     totalMatches: 69,
     currentTeam: "UPW",
     image: "",
-  },
+  }
 );
 // -------- Batch 3: Additional Players --------
 players.push(
@@ -1107,7 +1107,7 @@ players.push(
   },
   {
     name: "Jess Kerr",
-    nation: "Australia",
+    nation: "New Zealand",
     role: "Bowler (Medium pace)",
     retired: "No",
     born: "1997-01-15",
@@ -1277,7 +1277,7 @@ players.push(
     totalMatches: 5,
     currentTeam: "UPW",
   },
-   {
+  {
     name: "Amanjot Kaur",
     nation: "India",
     role: "Allrounder (Right-arm fast)",
@@ -1287,7 +1287,7 @@ players.push(
     totalMatches: 25,
     currentTeam: "MI",
   },
-   {
+  {
     name: "Sree Charani",
     nation: "India",
     role: "Left-arm spinner",
@@ -1315,6 +1315,6 @@ players.push(
     born: "1996-01-23",
     battingHand: "Right",
     totalMatches: 23,
-    currentTeam: "—"
+    currentTeam: "—",
   }
 );

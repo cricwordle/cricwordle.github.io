@@ -2,31 +2,42 @@ import React, { useState, useEffect } from "react";
 import "./ShareModal.css";
 import Confetti from "react-confetti";
 
-
 function ShareModal({
   show,
   onClose,
   guesses,
   mysteryPlayer,
   maxAttempts = 8,
-  onPlayAgain 
+  onPlayAgain,
+  gamesPlayed,
+  maxGames,
 }) {
   const [copied, setCopied] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
+  const hasHitLimit = gamesPlayed >= maxGames;
 
   useEffect(() => {
-  if (show && guesses.some(player => player.name === mysteryPlayer.name)) {
-    setShowConfetti(true);
-    const timer = setTimeout(() => setShowConfetti(false), 6000);
-    return () => clearTimeout(timer);
-  }
-}, [show, guesses, mysteryPlayer.name]);
+    if (!show || guesses.length === 0) {
+      setShowConfetti(false);
+      return;
+    }
 
+    const lastGuess = guesses[guesses.length - 1];
+    if (lastGuess.name === mysteryPlayer.name) {
+      // ✅ Show confetti only if the most recent guess is correct
+      setShowConfetti(true);
+      const timer = setTimeout(() => setShowConfetti(false), 6000);
+      return () => clearTimeout(timer);
+    } else {
+      // ❌ Hide confetti for wrong guesses
+      setShowConfetti(false);
+    }
+  }, [show, guesses, mysteryPlayer.name]);
 
   if (!show) return null;
 
   const guessedCorrectly = guesses.some(
-    (player) => player.name === mysteryPlayer.name,
+    (player) => player.name === mysteryPlayer.name
   );
 
   const yearDiff = (date1, date2) => {
@@ -61,7 +72,7 @@ function ShareModal({
               return "🟨";
             return "⬛";
           })
-          .join(""),
+          .join("")
       )
       .join("\n");
   };
@@ -103,8 +114,10 @@ function ShareModal({
 
   return (
     <div className="modal-backdrop">
-      <div className="modal" >
-        {showConfetti && <Confetti width={window.innerWidth} height={window.innerHeight} />}
+      <div className="modal">
+        {showConfetti && (
+          <Confetti width={window.innerWidth} height={window.innerHeight} />
+        )}
         <h2>Share your score</h2>
 
         {guessedCorrectly ? (
@@ -130,33 +143,49 @@ function ShareModal({
                 .catch((err) => console.error("Error sharing:", err));
             } else {
               copyToClipboard();
-              alert("Sharing not supported on this device. Use the Copy Link button instead!");
+              alert(
+                "Sharing not supported on this device. Use the Copy Link button instead!"
+              );
             }
           }}
         >
           Share
         </button>
         {/* Play Again Button */}
-        <button
-          className="copy-btn"
-          onClick={() => {
-          onPlayAgain();   // <-- call resetGame from parent
-          onClose();       // <-- close modal
-        }}
-          style={{
-            marginTop: "10px",
-            width: "100%",
-            padding: "12px",
-            fontSize: "16px",
-            background: "#4caf50",
-            color: "white",
-            border: "none",
-            borderRadius: "8px",
-            cursor: "pointer",
-          }}
-        >
-          Play Again
-        </button>
+        {!hasHitLimit ? (
+          <button
+            className="copy-btn"
+            onClick={() => {
+              if (gamesPlayed < maxGames) {
+                onPlayAgain(); // resetGame from parent
+                onClose(); // close modal
+              }
+            }}
+            style={{
+              marginTop: "10px",
+              width: "100%",
+              padding: "12px",
+              fontSize: "16px",
+              background: "#4caf50",
+              color: "white",
+              border: "none",
+              borderRadius: "8px",
+              cursor: "pointer",
+            }}
+          >
+            Play Again
+          </button>
+        ) : (
+          <p
+            style={{
+              textAlign: "center",
+              fontWeight: "bold",
+              marginTop: "10px",
+            }}
+          >
+            🚫 You've hit today's max limit of {maxGames} games!
+          </p>
+        )}
         <button
           onClick={copyToClipboard}
           className={`copy-btn ${copied ? "copied" : ""}`}

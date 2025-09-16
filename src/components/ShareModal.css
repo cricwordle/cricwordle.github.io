@@ -166,7 +166,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -205,7 +205,11 @@
 }
 
 .play-again-button {
-  background: linear-gradient(135deg, #2e7d32, #43a047); /* darker-to-softer green */
+  background: linear-gradient(
+    135deg,
+    #2e7d32,
+    #43a047
+  ); /* darker-to-softer green */
   color: white;
 }
 /* Optional hover */
@@ -244,7 +248,7 @@
 /* Button hover effects */
 .modal button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Specific buttons */
@@ -311,7 +315,7 @@
 .copy-btn:hover,
 .close-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Specific colors */
@@ -366,11 +370,11 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center; /* horizontal center */
-  align-items: center;     /* vertical center */
-  padding: 0;              /* remove extra padding */
+  align-items: center; /* vertical center */
+  padding: 0; /* remove extra padding */
   z-index: 1000;
 }
 /* MOBILE ONLY */
@@ -378,21 +382,17 @@
   .modal-backdrop {
     display: flex;
     justify-content: center; /* horizontal center */
-    align-items: center;     /* vertical center */
-    padding: 0;              /* remove extra padding */
+    align-items: center; /* vertical center */
+    padding: 0; /* remove extra padding */
   }
 
   .modal {
-    width: 95%;              /* almost full screen */
-    max-width: none;         /* ignore desktop max-width */
-    max-height: 90vh;        /* prevent overflow */
+    width: 95%; /* almost full screen */
+    max-width: none; /* ignore desktop max-width */
+    max-height: 90vh; /* prevent overflow */
     padding: 15px 10px;
-    overflow-y: auto;        /* scroll if content is taller than screen */
+    overflow-y: auto; /* scroll if content is taller than screen */
     box-sizing: border-box;
-    margin: auto;            /* ensure vertical centering */
+    margin: auto; /* ensure vertical centering */
   }
 }
-
-
-
-

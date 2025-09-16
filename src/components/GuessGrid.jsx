@@ -36,7 +36,6 @@ function GuessGrid({ guesses, mysteryPlayer }) {
     }
   }, [guesses]);
 
-
   const getBornArrow = (guess) => {
     const guessedYear = new Date(guess.born).getFullYear();
     const mysteryYear = new Date(mysteryPlayer.born).getFullYear();
@@ -59,11 +58,18 @@ function GuessGrid({ guesses, mysteryPlayer }) {
       case "retired":
         return guess.retired === mysteryPlayer.retired ? "green" : "grey";
       case "battingHand":
-        return guess.battingHand === mysteryPlayer.battingHand ? "green" : "grey";
+        return guess.battingHand === mysteryPlayer.battingHand
+          ? "green"
+          : "grey";
       case "currentTeam":
-        return guess.currentTeam === mysteryPlayer.currentTeam ? "green" : "grey";
+        return guess.currentTeam === mysteryPlayer.currentTeam
+          ? "green"
+          : "grey";
       case "born": {
-        const diff = Math.abs(new Date(guess.born).getFullYear() - new Date(mysteryPlayer.born).getFullYear());
+        const diff = Math.abs(
+          new Date(guess.born).getFullYear() -
+            new Date(mysteryPlayer.born).getFullYear()
+        );
         if (diff === 0) return "green";
         if (diff <= 2) return "orange";
         return "grey";
@@ -82,7 +88,10 @@ function GuessGrid({ guesses, mysteryPlayer }) {
   const getTooltip = (guess, key) => {
     switch (key) {
       case "born": {
-        const diff = Math.abs(new Date(guess.born).getFullYear() - new Date(mysteryPlayer.born).getFullYear());
+        const diff = Math.abs(
+          new Date(guess.born).getFullYear() -
+            new Date(mysteryPlayer.born).getFullYear()
+        );
         return diff > 0 ? `Year difference: ${diff}` : null;
       }
       case "totalMatches": {
@@ -162,9 +171,15 @@ function GuessGrid({ guesses, mysteryPlayer }) {
             )}
             {renderCell(guess, "role", guess.role, 2, rowIndex)}
             {renderCell(guess, "retired", guess.retired, 3, rowIndex)}
-            {renderCell(guess, "born", <>
-              {new Date(guess.born).getFullYear()} {getBornArrow(guess)}
-            </>, 4, rowIndex)}
+            {renderCell(
+              guess,
+              "born",
+              <>
+                {new Date(guess.born).getFullYear()} {getBornArrow(guess)}
+              </>,
+              4,
+              rowIndex
+            )}
             {renderCell(guess, "battingHand", guess.battingHand, 5, rowIndex)}
             {renderCell(guess, "totalMatches", guess.totalMatches, 6, rowIndex)}
             {renderCell(guess, "currentTeam", guess.currentTeam, 7, rowIndex)}

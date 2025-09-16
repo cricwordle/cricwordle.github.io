@@ -38,7 +38,7 @@ export default function GuessInput({
     if (e.key === "ArrowDown") {
       e.preventDefault();
       setHighlightIndex((prev) =>
-        Math.min(prev + 1, filteredPlayers.length - 1),
+        Math.min(prev + 1, filteredPlayers.length - 1)
       );
     } else if (e.key === "ArrowUp") {
       e.preventDefault();
