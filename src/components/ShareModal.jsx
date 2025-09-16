@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./ShareModal.css";
+import Confetti from "react-confetti";
+
 
 function ShareModal({
   show,
@@ -9,6 +11,16 @@ function ShareModal({
   maxAttempts = 8,
 }) {
   const [copied, setCopied] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
+
+  useEffect(() => {
+  if (show && guesses.some(player => player.name === mysteryPlayer.name)) {
+    setShowConfetti(true);
+    const timer = setTimeout(() => setShowConfetti(false), 6000);
+    return () => clearTimeout(timer);
+  }
+}, [show, guesses, mysteryPlayer.name]);
+
 
   if (!show) return null;
 
@@ -90,7 +102,8 @@ function ShareModal({
 
   return (
     <div className="modal-backdrop">
-      <div className="modal">
+      <div className="modal" >
+        {showConfetti && <Confetti width={window.innerWidth} height={window.innerHeight} />}
         <h2>Share your score</h2>
 
         {guessedCorrectly ? (
