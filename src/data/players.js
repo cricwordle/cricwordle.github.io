@@ -1493,6 +1493,36 @@ players.push(
     totalMatches: 119,
     currentTeam: "MI",
     image: ""
-  }
+  },
+  {
+  name: "Kathryn Bryce",
+  nation: "Scotland",
+  role: "Allrounder (Right-arm pace)",
+  retired: "No",
+  born: "1997-11-17",
+  battingHand: "Right",
+  totalMatches: 59,       
+  currentTeam: "GG", 
+},
+{
+  name: "Sarah Bryce",
+  nation: "Scotland",
+  role: "WK Batter",
+  retired: "No",
+  born: "2000-01-08",
+  battingHand: "Right",
+  totalMatches: 68,         
+  currentTeam: "DC",  
+},
+{
+  name: "Esha Oza",
+  nation: "UAE",
+  role: "Allrounder (Off spin)",
+  retired: "No",
+  born: "1998-08-01",
+  battingHand: "Right",
+  totalMatches: 93,        
+  currentTeam: "—",        
+}
 );
 
