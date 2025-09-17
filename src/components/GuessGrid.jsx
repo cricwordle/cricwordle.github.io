@@ -14,8 +14,7 @@ function GuessGrid({ guesses, mysteryPlayer }) {
       "New Zealand": "NZ",
       "Sri Lanka": "LK",
       Bangladesh: "BD",
-      Ireland: "IE",
-      Bangladesh: "BD"
+      Ireland: "IE"
     };
     return map[nation] || null;
   };
