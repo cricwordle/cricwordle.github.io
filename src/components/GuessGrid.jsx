@@ -15,7 +15,7 @@ function GuessGrid({ guesses, mysteryPlayer }) {
       "Sri Lanka": "LK",
       Bangladesh: "BD",
       Ireland: "IE",
-      Scotland: "SCO",  
+      Scotland: "/images/scotland.png",  
       UAE: "AE" 
     };
     return map[nation] || null;
@@ -171,7 +171,15 @@ function GuessGrid({ guesses, mysteryPlayer }) {
                     alt="West Indies Flag"
                     style={{ width: "6vw", maxWidth: 40, height: "auto" }}
                   />
-                ) : (
+                )
+                : guess.nation === "Scotland" ? (
+                  <img
+                    src="/images/scotland.png"  
+                    alt="Scotland Flag"
+                    style={{ width: "6vw", maxWidth: 40, height: "auto" }}
+                  />
+                ) 
+                : (
                   <Flag
                     code={getFlagCode(guess.nation)}
                     style={{ width: "6vw", maxWidth: 40, height: "auto" }}
