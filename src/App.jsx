@@ -55,6 +55,41 @@ function App() {
     }, 1000);
     return () => clearInterval(interval);
   }, []);
+  // ---------------- Emoji Pattern Function ----------------
+  const getEmojiPattern = () => {
+    if (!guesses || guesses.length === 0) return "";
+
+    return guesses
+      .map((player) => {
+        const keys = [
+          "name",
+          "role",
+          "nation",
+          "battingHand",
+          "currentTeam",
+          "retired",
+          "born",
+          "totalMatches",
+        ];
+        return keys
+          .map((key) => {
+            const color = player.colors[key];
+            switch (color) {
+              case "green":
+                return "🟩";
+              case "orange":
+                return "🟨"; // better to use 🟨 instead of 🟧 for orange
+              case "grey":
+                return "⬛";
+              default:
+                return "⬛";
+            }
+          })
+          .join("");
+      })
+      .join("\n");
+  };
+  
   const pickRandomPlayer = () => {
     // 🚫 Stop starting a 4th game if daily limit reached
     if (!DISABLE_LIMIT && gamesPlayedToday >= MAX_GAMES_PER_DAY) {
@@ -464,6 +499,7 @@ function App() {
         onPlayAgain={resetGame}
         gamesPlayed={gamesPlayed}
         maxGames={MAX_GAMES_PER_DAY}
+        emojiPattern={getEmojiPattern()}
       />
       <footer
         style={{

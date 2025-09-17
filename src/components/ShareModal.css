@@ -120,7 +120,7 @@
 
 /* Optional: Copied feedback animation */
 .copy-btn.copied {
-  background-color: #4caf50 !important;
+  background-color: 🟩 !important;
   transition: background-color 0.3s ease;
 }
 /* MOBILE COPIED BUTTON */
@@ -228,7 +228,7 @@
 }
 
 .copy-btn.copied {
-  background: #6aaa64;
+  background: 🟩;
 }
 
 /* Buttons general style */
@@ -268,7 +268,7 @@
 }
 
 .copy-btn.copied {
-  background: #6aaa64 !important;
+  background: 🟩 !important;
 }
 
 .close-btn {
@@ -335,7 +335,7 @@
 }
 
 .copy-btn.copied {
-  background: #6aaa64 !important; /* green when copied */
+  background: 🟩 !important; /* green when copied */
 }
 
 .close-btn {

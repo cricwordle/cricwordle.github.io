@@ -11,6 +11,7 @@ function ShareModal({
   onPlayAgain,
   gamesPlayed,
   maxGames,
+  emojiPattern
 }) {
   const [copied, setCopied] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
@@ -45,44 +46,12 @@ function ShareModal({
     const y2 = new Date(date2).getFullYear();
     return Math.abs(y1 - y2);
   };
-
-  const getPattern = () => {
-    const fields = [
-      "name",
-      "nation",
-      "role",
-      "retired",
-      "born",
-      "battingHand",
-      "totalMatches",
-      "currentTeam",
-    ];
-
-    return guesses
-      .map((player) =>
-        fields
-          .map((f) => {
-            if (player[f] === mysteryPlayer[f]) return "🟩";
-            if (f === "born" && yearDiff(player[f], mysteryPlayer[f]) <= 2)
-              return "🟨";
-            if (
-              f === "totalMatches" &&
-              Math.abs(player[f] - mysteryPlayer[f]) <= 5
-            )
-              return "🟨";
-            return "⬛";
-          })
-          .join("")
-      )
-      .join("\n");
-  };
-
   const tries =
     guesses.find((g) => g.name === mysteryPlayer.name) === undefined
       ? "X"
       : guesses.length;
 
-  const shareText = `Women's Cricket Wordle ${tries}/${maxAttempts}\n\n${getPattern()}\n\nhttps://cricwordle.github.io/`;
+  const shareText = `Women's Cricket Wordle ${tries}/${maxAttempts}\n\n${emojiPattern}\n\nhttps://cricwordle.github.io/`;
 
   const copyToClipboard = () => {
     const fallbackCopy = () => {
