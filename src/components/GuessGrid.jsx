@@ -18,11 +18,10 @@ function GuessGrid({ guesses, mysteryPlayer }) {
     return map[nation] || null;
   };
   const bgColorMap = {
-  green: "#6aaa64",
-  orange: "#f39c12",
-  grey: "#787c7e",
-};
-
+    green: "#6aaa64",
+    orange: "#f39c12",
+    grey: "#787c7e",
+  };
 
   // 🔹 New state for flip animation
   const [revealingRow, setRevealingRow] = useState(null);
@@ -111,28 +110,26 @@ function GuessGrid({ guesses, mysteryPlayer }) {
   };
 
   // 🔹 Updated renderCell for animation
-const renderCell = (guess, key, content, colIndex, rowIndex) => {
-  const colorClass = getCellColor(guess, key);
-  const tooltip = getTooltip(guess, key);
+  const renderCell = (guess, key, content, colIndex, rowIndex) => {
+    const colorClass = getCellColor(guess, key);
+    const tooltip = getTooltip(guess, key);
 
-  return (
-    <div
-  className={`guess-cell flip ${revealingRow === rowIndex ? "revealing" : ""}`}
-  style={{
-    "--cell-index": colIndex,
-    backgroundColor:
-      key === "name" && window.innerWidth <= 600
-        ? "#f0f0f0" // light grey for mobile
-        : bgColorMap[colorClass],
-  }}
-  {...(tooltip && { "data-tooltip": tooltip })}
->
-  {content}
-</div>
-
-  );
-};
-
+    return (
+      <div
+        className={`guess-cell flip ${revealingRow === rowIndex ? "revealing" : ""}`}
+        style={{
+          "--cell-index": colIndex,
+          backgroundColor:
+            key === "name" && window.innerWidth <= 600
+              ? "#f0f0f0" // light grey for mobile
+              : bgColorMap[colorClass],
+        }}
+        {...(tooltip && { "data-tooltip": tooltip })}
+      >
+        {content}
+      </div>
+    );
+  };
 
   return (
     <div className="guess-grid-wrapper">

@@ -102,7 +102,7 @@ export const players = [
   {
     name: "Sophie Molineux",
     nation: "Australia",
-    role: "Left-arm spinner",
+    role: "Left-arm spin Bowler",
     retired: "No",
     born: "1998-01-17",
     battingHand: "Left",
@@ -192,7 +192,7 @@ export const players = [
   {
     name: "Sophie Ecclestone",
     nation: "England",
-    role: "Left-arm spin",
+    role: "Left-arm spin Bowler",
     retired: "No",
     born: "1999-05-06",
     battingHand: "Left",
@@ -775,8 +775,8 @@ players.push(
   {
     name: "Ekta Bisht",
     nation: "India",
-    role: "Left-arm spinner",
-    retired: "Yes",
+    role: "Left-arm spin Bowler",
+    retired: "No",
     born: "1986-02-08",
     battingHand: "Left",
     totalMatches: 105,
@@ -797,7 +797,7 @@ players.push(
   {
     name: "Alex Hartley",
     nation: "England",
-    role: "Left-arm spinner",
+    role: "Left-arm spin Bowler",
     retired: "Yes",
     born: "1993-09-26",
     battingHand: "Right",
@@ -1200,7 +1200,7 @@ players.push(
   {
     name: "Diana Edulji",
     nation: "India",
-    role: "Left-arm spinner",
+    role: "Left-arm spin Bowler",
     retired: "Yes",
     born: "1956-01-26",
     battingHand: "Right",
@@ -1210,7 +1210,7 @@ players.push(
   {
     name: "Neetu David",
     nation: "India",
-    role: "Left-arm spinner",
+    role: "Left-arm spin Bowler",
     retired: "Yes",
     born: "1977-09-01",
     battingHand: "Right",
@@ -1290,7 +1290,7 @@ players.push(
   {
     name: "Sree Charani",
     nation: "India",
-    role: "Left-arm spinner",
+    role: "Left-arm spin Bowler",
     retired: "No",
     born: "2004-08-04",
     battingHand: "Left",
@@ -1300,7 +1300,7 @@ players.push(
   {
     name: "Uma Chetry",
     nation: "India",
-    role: "Wicket-keeper batter",
+    role: "WK Batter",
     retired: "No",
     born: "2002-07-27",
     battingHand: "Right",

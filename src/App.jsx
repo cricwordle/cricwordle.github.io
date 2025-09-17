@@ -93,42 +93,40 @@ function App() {
   };
 
   // --- Role closeness check ---
-   const isRoleClose = (guessRole, mysteryRole) => {
-  if (!guessRole || !mysteryRole) return false;
+  const isRoleClose = (guessRole, mysteryRole) => {
+    if (!guessRole || !mysteryRole) return false;
 
-  const g = guessRole.toLowerCase().trim();
-  const m = mysteryRole.toLowerCase().trim();
+    const g = guessRole.toLowerCase().trim();
+    const m = mysteryRole.toLowerCase().trim();
 
-  // Exact match handled elsewhere
-  if (g === m) return false;
+    // Exact match handled elsewhere
+    if (g === m) return false;
 
-  // Extract main type
-  const extractType = (role) => {
-    if (role.includes("allrounder")){
-      return "allrounder";
-    }
+    // Extract main type
+    const extractType = (role) => {
+      if (role.includes("allrounder")) {
+        return "allrounder";
+      }
 
-    if (role.includes("bowler")){
-      return "bowler";
-    }
+      if (role.includes("bowler")) {
+        return "bowler";
+      }
 
-    if (role.includes("batter")){
-      return "batter"
+      if (role.includes("batter")) {
+        return "batter";
+      }
+      return null;
     };
-    return null;
+
+    const gType = extractType(g);
+    const mType = extractType(m);
+
+    if (gType && mType && gType === mType) {
+      return true; // ORANGE
+    }
+
+    return false; // GREY
   };
-
-  const gType = extractType(g);
-  const mType = extractType(m);
-
-  if (gType && mType && gType === mType) {
-    return true; // ORANGE
-  }
-
-  return false; // GREY
-};
-
-
 
   const annotateGuess = (player) => {
     const annotated = { ...player, colors: {} };
@@ -143,15 +141,14 @@ function App() {
       player.battingHand === mystery.battingHand ? "green" : "grey";
     annotated.colors.currentTeam =
       player.currentTeam === mystery.currentTeam ? "green" : "grey";
-            // ✅ Role coloring logic
-      if (player.role === mystery.role) {
-        annotated.colors.role = "green";
-      } else if (isRoleClose(player.role, mystery.role)) {
-        annotated.colors.role = "orange";
-      } else {
-        annotated.colors.role = "grey";
-      }
-
+    // ✅ Role coloring logic
+    if (player.role === mystery.role) {
+      annotated.colors.role = "green";
+    } else if (isRoleClose(player.role, mystery.role)) {
+      annotated.colors.role = "orange";
+    } else {
+      annotated.colors.role = "grey";
+    }
 
     const bornDiff = Math.abs(
       new Date(player.born).getFullYear() - new Date(mystery.born).getFullYear()
