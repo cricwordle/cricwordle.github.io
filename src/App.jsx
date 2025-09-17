@@ -92,6 +92,44 @@ function App() {
     setGamesPlayedToday(stored[today]);
   };
 
+  // --- Role closeness check ---
+   const isRoleClose = (guessRole, mysteryRole) => {
+  if (!guessRole || !mysteryRole) return false;
+
+  const g = guessRole.toLowerCase().trim();
+  const m = mysteryRole.toLowerCase().trim();
+
+  // Exact match handled elsewhere
+  if (g === m) return false;
+
+  // Extract main type
+  const extractType = (role) => {
+    if (role.includes("allrounder")){
+      return "allrounder";
+    }
+
+    if (role.includes("bowler")){
+      return "bowler";
+    }
+
+    if (role.includes("batter")){
+      return "batter"
+    };
+    return null;
+  };
+
+  const gType = extractType(g);
+  const mType = extractType(m);
+
+  if (gType && mType && gType === mType) {
+    return true; // ORANGE
+  }
+
+  return false; // GREY
+};
+
+
+
   const annotateGuess = (player) => {
     const annotated = { ...player, colors: {} };
     const mystery = mysteryPlayer;
@@ -99,13 +137,21 @@ function App() {
     annotated.colors.name = player.name === mystery.name ? "green" : "grey";
     annotated.colors.nation =
       player.nation === mystery.nation ? "green" : "grey";
-    annotated.colors.role = player.role === mystery.role ? "green" : "grey";
     annotated.colors.retired =
       player.retired === mystery.retired ? "green" : "grey";
     annotated.colors.battingHand =
       player.battingHand === mystery.battingHand ? "green" : "grey";
     annotated.colors.currentTeam =
       player.currentTeam === mystery.currentTeam ? "green" : "grey";
+            // ✅ Role coloring logic
+      if (player.role === mystery.role) {
+        annotated.colors.role = "green";
+      } else if (isRoleClose(player.role, mystery.role)) {
+        annotated.colors.role = "orange";
+      } else {
+        annotated.colors.role = "grey";
+      }
+
 
     const bornDiff = Math.abs(
       new Date(player.born).getFullYear() - new Date(mystery.born).getFullYear()
@@ -116,7 +162,6 @@ function App() {
     const matchDiff = Math.abs(player.totalMatches - mystery.totalMatches);
     annotated.colors.totalMatches =
       matchDiff === 0 ? "green" : matchDiff <= 5 ? "orange" : "grey";
-
     return annotated;
   };
 

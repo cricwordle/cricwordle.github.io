@@ -32,7 +32,7 @@ export const players = [
   {
     name: "Harmanpreet Kaur",
     nation: "India",
-    role: "Batting Allrounder (Right-arm off spin)",
+    role: "Batting Allrounder (Off spin)",
     retired: "No",
     born: "1989-03-08",
     battingHand: "Right",
@@ -42,7 +42,7 @@ export const players = [
   {
     name: "Richa Ghosh",
     nation: "India",
-    role: "Wicketkeeper Batter",
+    role: "WK Batter",
     retired: "No",
     born: "2003-09-28",
     battingHand: "Right",
@@ -52,7 +52,7 @@ export const players = [
   {
     name: "Ellyse Perry",
     nation: "Australia",
-    role: "Allrounder (Right-arm fast)",
+    role: "Allrounder (Right-arm pace)",
     retired: "No",
     born: "1990-11-03",
     battingHand: "Right",
@@ -62,7 +62,7 @@ export const players = [
   {
     name: "Beth Mooney",
     nation: "Australia",
-    role: "Wicketkeeper Batter",
+    role: "WK Batter",
     retired: "No",
     born: "1994-01-14",
     battingHand: "Left",
@@ -82,7 +82,7 @@ export const players = [
   {
     name: "Ashleigh Gardner",
     nation: "Australia",
-    role: "Allrounder (Right-arm off spin)",
+    role: "Allrounder (Off spin)",
     retired: "No",
     born: "1997-04-15",
     battingHand: "Right",
@@ -92,7 +92,7 @@ export const players = [
   {
     name: "Tahlia McGrath",
     nation: "Australia",
-    role: "Batting Allrounder (Right-arm medium)",
+    role: "Batting Allrounder (Right-arm pace)",
     retired: "No",
     born: "1995-11-10",
     battingHand: "Right",
@@ -112,7 +112,7 @@ export const players = [
   {
     name: "Nicola Carey",
     nation: "Australia",
-    role: "Bowling Allrounder (Right-arm medium)",
+    role: "Bowling Allrounder (Right-arm pace)",
     retired: "No",
     born: "1993-09-10",
     battingHand: "Left",
@@ -122,7 +122,7 @@ export const players = [
   {
     name: "Delissa Kimmince",
     nation: "Australia",
-    role: "Bowling Allrounder (Right-arm medium)",
+    role: "Bowling Allrounder (Right-arm pace)",
     retired: "Yes",
     born: "1989-05-14",
     battingHand: "Right",
@@ -132,7 +132,7 @@ export const players = [
   {
     name: "Hannah Darlington",
     nation: "Australia",
-    role: "Bowling Allrounder (Right-arm medium)",
+    role: "Bowling Allrounder (Right-arm pace)",
     retired: "No",
     born: "2002-02-23",
     battingHand: "Right",
@@ -152,7 +152,7 @@ export const players = [
   {
     name: "Darcie Brown",
     nation: "Australia",
-    role: "Right-arm fast bowler",
+    role: "Right-arm pace bowler",
     retired: "No",
     born: "2003-03-07",
     battingHand: "Right",
@@ -182,7 +182,7 @@ export const players = [
   {
     name: "Alice Capsey",
     nation: "England",
-    role: "Batting Allrounder (Right-arm off spin)",
+    role: "Batting Allrounder (Off spin)",
     retired: "No",
     born: "2004-08-11",
     battingHand: "Right",
@@ -202,7 +202,7 @@ export const players = [
   {
     name: "Anya Shrubsole",
     nation: "England",
-    role: "Right-arm medium bowler",
+    role: "Right-arm pace bowler",
     retired: "Yes",
     born: "1991-12-07",
     battingHand: "Right",
@@ -212,7 +212,7 @@ export const players = [
   {
     name: "Issy Wong",
     nation: "England",
-    role: "Right-arm fast bowler",
+    role: "Right-arm pace bowler",
     retired: "No",
     born: "2002-05-15",
     battingHand: "Right",
@@ -222,7 +222,7 @@ export const players = [
   {
     name: "Natasha Farrant",
     nation: "England",
-    role: "Bowling Allrounder (Left-arm medium)",
+    role: "Bowling Allrounder (Left-arm pace)",
     retired: "No",
     born: "1996-05-29",
     battingHand: "Left",
@@ -232,7 +232,7 @@ export const players = [
   {
     name: "Sophie Devine",
     nation: "New Zealand",
-    role: "Batting Allrounder (Right-arm medium)",
+    role: "Batting Allrounder (Right-arm pace)",
     retired: "No",
     born: "1989-09-01",
     battingHand: "Right",
@@ -272,7 +272,7 @@ export const players = [
   {
     name: "Rachel Priest",
     nation: "New Zealand",
-    role: "Wicketkeeper Batter",
+    role: "WK Batter",
     retired: "Yes",
     born: "1985-07-13",
     battingHand: "Right",
@@ -282,7 +282,7 @@ export const players = [
   {
     name: "Amy Satterthwaite",
     nation: "New Zealand",
-    role: "Batting Allrounder (Right-arm off spin)",
+    role: "Batting Allrounder (Off spin)",
     retired: "Yes",
     born: "1986-10-07",
     battingHand: "Left",
@@ -292,7 +292,7 @@ export const players = [
   {
     name: "Stafanie Taylor",
     nation: "West Indies",
-    role: "Batting Allrounder (Right-arm off spin)",
+    role: "Batting Allrounder (Off spin)",
     retired: "No",
     born: "1991-06-11",
     battingHand: "Right",
@@ -302,7 +302,7 @@ export const players = [
   {
     name: "Hayley Matthews",
     nation: "West Indies",
-    role: "Batting Allrounder (Right-arm off spin)",
+    role: "Batting Allrounder (Off spin)",
     retired: "No",
     born: "1998-03-19",
     battingHand: "Right",
@@ -342,7 +342,7 @@ export const players = [
   {
     name: "Anneke Bosch",
     nation: "South Africa",
-    role: "Batting Allrounder (Right-arm medium)",
+    role: "Batting Allrounder (Right-arm pace)",
     retired: "No",
     born: "1993-08-17",
     battingHand: "Right",
@@ -362,7 +362,7 @@ export const players = [
   {
     name: "Marcia Letsoalo",
     nation: "South Africa",
-    role: "Right-arm medium bowler",
+    role: "Right-arm pace bowler",
     retired: "No",
     born: "1996-11-30",
     battingHand: "Right",
@@ -382,7 +382,7 @@ export const players = [
   {
     name: "Shabnim Ismail",
     nation: "South Africa",
-    role: "Right-arm fast bowler",
+    role: "Right-arm pace bowler",
     retired: "No",
     born: "1988-10-05",
     battingHand: "Left",
@@ -433,7 +433,7 @@ export const players = [
   {
     name: "Muneeba Ali",
     nation: "Pakistan",
-    role: "Wicketkeeper Batter",
+    role: "WK Batter",
     retired: "No",
     born: "1997-08-08",
     battingHand: "Left",
@@ -443,7 +443,7 @@ export const players = [
   {
     name: "Sidra Nawaz",
     nation: "Pakistan",
-    role: "Wicketkeeper Batter",
+    role: "WK Batter",
     retired: "No",
     born: "1994-03-14",
     battingHand: "Right",
@@ -453,7 +453,7 @@ export const players = [
   {
     name: "Nida Dar",
     nation: "Pakistan",
-    role: "Bowling Allrounder (Right-arm off spin)",
+    role: "Bowling Allrounder (Off spin)",
     retired: "No",
     born: "1987-01-02",
     battingHand: "Right",
@@ -463,7 +463,7 @@ export const players = [
   {
     name: "Diana Baig",
     nation: "Pakistan",
-    role: "Right-arm medium-fast bowler",
+    role: "Right-arm pace bowler",
     retired: "No",
     born: "1995-10-15",
     battingHand: "Right",
@@ -473,7 +473,7 @@ export const players = [
   {
     name: "Fatima Sana",
     nation: "Pakistan",
-    role: "Right-arm medium-fast bowler",
+    role: "Right-arm pace bowler",
     retired: "No",
     born: "2001-11-08",
     battingHand: "Right",
@@ -486,7 +486,7 @@ players.push(
   {
     name: "Pooja Vastrakar",
     nation: "India",
-    role: "Bowling Allrounder (Right-arm medium)",
+    role: "Bowling Allrounder (Right-arm pace)",
     retired: "No",
     born: "1999-09-25",
     battingHand: "Right",
@@ -508,7 +508,7 @@ players.push(
   {
     name: "Renuka Singh Thakur",
     nation: "India",
-    role: "Bowler (Right-arm medium-fast)",
+    role: "Right-arm pace bowler",
     retired: "No",
     born: "1996-02-02",
     battingHand: "Right",
@@ -519,7 +519,7 @@ players.push(
   {
     name: "Sneh Rana",
     nation: "India",
-    role: "Bowling Allrounder (Right-arm off spin)",
+    role: "Bowling Allrounder (Off spin)",
     retired: "No",
     born: "1994-02-18",
     battingHand: "Right",
@@ -530,7 +530,7 @@ players.push(
   {
     name: "Yastika Bhatia",
     nation: "India",
-    role: "Wicketkeeper Batter",
+    role: "WK Batter",
     retired: "No",
     born: "2000-11-01",
     battingHand: "Left",
@@ -552,7 +552,7 @@ players.push(
   {
     name: "Meghna Singh",
     nation: "India",
-    role: "Bowler (Right-arm medium)",
+    role: "Right-arm pace bowler",
     retired: "No",
     born: "1994-06-18",
     battingHand: "Right",
@@ -574,7 +574,7 @@ players.push(
   {
     name: "Heather Knight",
     nation: "England",
-    role: "Batting Allrounder (Right-arm off spin)",
+    role: "Batting Allrounder (Off spin)",
     retired: "No",
     born: "1990-12-26",
     battingHand: "Right",
@@ -585,7 +585,7 @@ players.push(
   {
     name: "Charlie Dean",
     nation: "England",
-    role: "Bowling Allrounder (Right-arm off spin)",
+    role: "Bowling Allrounder (Off spin)",
     retired: "No",
     born: "2000-12-22",
     battingHand: "Right",
@@ -596,7 +596,7 @@ players.push(
   {
     name: "Freya Davies",
     nation: "England",
-    role: "Bowler (Right-arm medium-fast)",
+    role: "Right-arm pace bowler",
     retired: "No",
     born: "1995-10-27",
     battingHand: "Right",
@@ -607,7 +607,7 @@ players.push(
   {
     name: "Amy Jones",
     nation: "England",
-    role: "Wicketkeeper Batter",
+    role: "WK Batter",
     retired: "No",
     born: "1993-06-13",
     battingHand: "Right",
@@ -618,7 +618,7 @@ players.push(
   {
     name: "Danni Gibson",
     nation: "England",
-    role: "Bowling Allrounder (Right-arm medium)",
+    role: "Bowling Allrounder (Right-arm pace)",
     retired: "No",
     born: "2001-04-30",
     battingHand: "Right",
@@ -629,7 +629,7 @@ players.push(
   {
     name: "Annabel Sutherland",
     nation: "Australia",
-    role: "Bowling Allrounder (Right-arm medium-fast)",
+    role: "Bowling Allrounder (Right-arm pace)",
     retired: "No",
     born: "2001-10-12",
     battingHand: "Right",
@@ -662,7 +662,7 @@ players.push(
   {
     name: "Kim Garth",
     nation: "Australia",
-    role: "Bowling Allrounder (Right-arm medium)",
+    role: "Bowling Allrounder (Right-arm pace)",
     retired: "No",
     born: "1996-04-25",
     battingHand: "Right",
@@ -684,7 +684,7 @@ players.push(
   {
     name: "Oshadi Ranasinghe",
     nation: "Sri Lanka",
-    role: "Bowling Allrounder (Right-arm medium)",
+    role: "Bowling Allrounder (Right-arm pace)",
     retired: "No",
     born: "1986-03-16",
     battingHand: "Left",
@@ -706,7 +706,7 @@ players.push(
   {
     name: "Udeshika Prabodhani",
     nation: "Sri Lanka",
-    role: "Bowler (Left-arm medium)",
+    role: "Bowler (Left-arm pace)",
     retired: "No",
     born: "1985-09-20",
     battingHand: "Left",
@@ -720,7 +720,7 @@ players.push(
   {
     name: "Shikha Pandey",
     nation: "India",
-    role: "Bowling Allrounder (Right-arm medium-fast)",
+    role: "Bowling Allrounder (Right-arm pace)",
     retired: "No",
     born: "1989-05-12",
     battingHand: "Right",
@@ -742,7 +742,7 @@ players.push(
   {
     name: "Taniya Bhatia",
     nation: "India",
-    role: "Wicketkeeper Batter",
+    role: "WK Batter",
     retired: "No",
     born: "1997-11-28",
     battingHand: "Right",
@@ -775,7 +775,7 @@ players.push(
   {
     name: "Ekta Bisht",
     nation: "India",
-    role: "Bowler (Left-arm spin)",
+    role: "Left-arm spinner",
     retired: "Yes",
     born: "1986-02-08",
     battingHand: "Left",
@@ -797,7 +797,7 @@ players.push(
   {
     name: "Alex Hartley",
     nation: "England",
-    role: "Bowler (Left-arm spin)",
+    role: "Left-arm spinner",
     retired: "Yes",
     born: "1993-09-26",
     battingHand: "Right",
@@ -808,7 +808,7 @@ players.push(
   {
     name: "Kate Cross",
     nation: "England",
-    role: "Bowler (Right-arm fast-medium)",
+    role: "Right-arm pace bowler",
     retired: "No",
     born: "1991-10-03",
     battingHand: "Right",
@@ -819,7 +819,7 @@ players.push(
   {
     name: "Lauren Bell",
     nation: "England",
-    role: "Bowler (Right-arm fast)",
+    role: "Right-arm pace bowler",
     retired: "No",
     born: "2001-01-02",
     battingHand: "Right",
@@ -863,7 +863,7 @@ players.push(
   {
     name: "Alyssa Healy",
     nation: "Australia",
-    role: "Wicketkeeper Batter",
+    role: "WK Batter",
     retired: "No",
     born: "1990-03-24",
     battingHand: "Right",
@@ -899,7 +899,7 @@ players.push(
   {
     name: "Mansi Joshi",
     nation: "India",
-    role: "Bowler (Right-arm medium-fast)",
+    role: "Right-arm pace bowler",
     retired: "No",
     born: "1993-08-18",
     battingHand: "Right",
@@ -910,7 +910,7 @@ players.push(
   {
     name: "Arundhati Reddy",
     nation: "India",
-    role: "Bowling Allrounder (Right-arm medium)",
+    role: "Bowling Allrounder (Right-arm pace)",
     retired: "No",
     born: "1997-10-04",
     battingHand: "Right",
@@ -954,7 +954,7 @@ players.push(
   {
     name: "Jhulan Goswami",
     nation: "India",
-    role: "Bowler (Right-arm medium-fast)",
+    role: "Right-arm pace bowler",
     retired: "Yes",
     born: "1982-11-25",
     battingHand: "Right",
@@ -976,7 +976,7 @@ players.push(
   {
     name: "Katherine Sciver-Brunt",
     nation: "England",
-    role: "Bowling Allrounder (Right-arm fast)",
+    role: "Bowling Allrounder (Right-arm pace)",
     retired: "Yes",
     born: "1985-07-02",
     battingHand: "Right",
@@ -987,7 +987,7 @@ players.push(
   {
     name: "Nat Sciver-Brunt",
     nation: "England",
-    role: "Batting Allrounder (Medium pace)",
+    role: "Batting Allrounder (Right-arm pace)",
     retired: "No",
     born: "1992-08-20",
     battingHand: "Right",
@@ -1009,7 +1009,7 @@ players.push(
   {
     name: "Lauren Winfield-Hill",
     nation: "England",
-    role: "Wicketkeeper Batter",
+    role: "WK Batter",
     retired: "No",
     born: "1990-08-16",
     battingHand: "Right",
@@ -1042,7 +1042,7 @@ players.push(
   {
     name: "Megan Schutt",
     nation: "Australia",
-    role: "Bowler (Right-arm medium-fast)",
+    role: "Right-arm pace bowler",
     retired: "No",
     born: "1993-01-15",
     battingHand: "Right",
@@ -1108,7 +1108,7 @@ players.push(
   {
     name: "Jess Kerr",
     nation: "New Zealand",
-    role: "Bowler (Medium pace)",
+    role: "Right-arm pace bowler",
     retired: "No",
     born: "1997-01-15",
     battingHand: "Right",
@@ -1130,7 +1130,7 @@ players.push(
   {
     name: "Betty Wilson",
     nation: "Australia",
-    role: "Allrounder (Right-arm off spin)",
+    role: "Allrounder (Off spin)",
     retired: "Yes",
     born: "1921-11-21",
     battingHand: "Right",
@@ -1150,7 +1150,7 @@ players.push(
   {
     name: "Karen Rolton",
     nation: "Australia",
-    role: "Allrounder (Left-arm medium bowler)",
+    role: "Allrounder (Left-arm pace)",
     retired: "Yes",
     born: "1977-11-21",
     battingHand: "Left",
@@ -1190,7 +1190,7 @@ players.push(
   {
     name: "Sarah Taylor",
     nation: "England",
-    role: "Wicketkeeper-batter",
+    role: "WK Batter",
     retired: "Yes",
     born: "1989-05-20",
     battingHand: "Right",
@@ -1200,7 +1200,7 @@ players.push(
   {
     name: "Diana Edulji",
     nation: "India",
-    role: "Bowler (left-arm Spin)",
+    role: "Left-arm spinner",
     retired: "Yes",
     born: "1956-01-26",
     battingHand: "Right",
@@ -1220,7 +1220,7 @@ players.push(
   {
     name: "Debbie Hockley",
     nation: "New Zealand",
-    role: "Batter (Right-arm medium bowler)",
+    role: "Allrounder (Right-arm pace)",
     retired: "Yes",
     born: "1962-11-07",
     battingHand: "Right",
@@ -1230,8 +1230,8 @@ players.push(
   {
     name: "Deandra Dottin",
     nation: "West Indies",
-    role: "Allrounder (Right-arm fast)",
-    retired: "No (retired from international cricket)",
+    role: "Allrounder (Right-arm pace)",
+    retired: "No",
     born: "1991-06-21",
     battingHand: "Right",
     totalMatches: "272",
@@ -1250,7 +1250,7 @@ players.push(
   {
     name: "Shreyanka Patil",
     nation: "India",
-    role: "Bowling Allrounder (Right-arm off spin)",
+    role: "Bowling Allrounder (Off spin)",
     retired: "Yes",
     born: "2002-07-31",
     battingHand: "Right",
@@ -1270,7 +1270,7 @@ players.push(
   {
     name: "Kranti Gaud",
     nation: "India",
-    role: "Allrounder (Right-arm fast)",
+    role: "Allrounder (Right-arm pace)",
     retired: "No",
     born: "2003-08-11",
     battingHand: "Right",
@@ -1280,7 +1280,7 @@ players.push(
   {
     name: "Amanjot Kaur",
     nation: "India",
-    role: "Allrounder (Right-arm fast)",
+    role: "Allrounder (Right-arm pace)",
     retired: "No",
     born: "2000-08-25",
     battingHand: "Right",

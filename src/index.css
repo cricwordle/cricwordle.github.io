@@ -894,3 +894,19 @@ footer .developer-credit {
   align-items: center;
   z-index: 9999; /* very high so nothing covers it */
 }
+@media (max-width: 600px) {
+  /* Player Name cell (first column) */
+  .guess-row:not(.mobile-header) .guess-cell:first-child {
+    text-align: left;
+    justify-content: flex-start;
+    padding-left: 10px;
+    color: #d3d6da; /* light grey instead of #333 */
+  }
+}
+@media (max-width: 600px) {
+  /* Player Name cell in guessed rows */
+  .guess-row:not(.header) > .guess-cell:first-child {
+    background-color: #a55050; /* light grey */
+    color: #333; /* optional: text color */
+  }
+}
