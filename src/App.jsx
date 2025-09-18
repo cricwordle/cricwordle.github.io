@@ -8,8 +8,30 @@ import "./index.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const MAX_ATTEMPTS = 8;
-const MAX_GAMES_PER_DAY = 3;
+const MAX_GAMES_PER_DAY = 1;
 const DISABLE_LIMIT = false;
+
+const getContinent = (nation) => {
+  const asia = [
+    "India",
+    "Pakistan",
+    "Sri Lanka",
+    "Bangladesh",
+    "Afghanistan",
+    "Nepal",
+  ];
+  const europe = ["England", "Ireland", "Scotland", "Netherlands"];
+  const oceania = ["Australia", "New Zealand"];
+  const africa = ["South Africa", "Zimbabwe"];
+  const americas = ["West Indies", "USA"];
+
+  if (asia.includes(nation)) return "Asia";
+  if (europe.includes(nation)) return "Europe";
+  if (oceania.includes(nation)) return "Oceania";
+  if (africa.includes(nation)) return "Africa";
+  if (americas.includes(nation)) return "Americas";
+  return null;
+};
 
 function App() {
   const [mysteryPlayer, setMysteryPlayer] = useState(null);
@@ -89,7 +111,7 @@ function App() {
       })
       .join("\n");
   };
-  
+
   const pickRandomPlayer = () => {
     // 🚫 Stop starting a 4th game if daily limit reached
     if (!DISABLE_LIMIT && gamesPlayedToday >= MAX_GAMES_PER_DAY) {
@@ -164,23 +186,39 @@ function App() {
   };
 
   const annotateGuess = (player) => {
-    const annotated = { ...player, colors: {} };
+    const annotated = { ...player, colors: {}, tooltips: {} };
     const mystery = mysteryPlayer;
 
     annotated.colors.name = player.name === mystery.name ? "green" : "grey";
-    annotated.colors.nation =
-      player.nation === mystery.nation ? "green" : "grey";
+
+    // Nation coloring logic with continent hint
+    if (player.nation === mystery.nation) {
+      annotated.colors.nation = "green";
+    } else {
+      const guessContinent = getContinent(player.nation);
+      const mysteryContinent = getContinent(mystery.nation);
+
+      if (guessContinent && guessContinent === mysteryContinent) {
+        annotated.colors.nation = "orange"; // same continent = close
+        annotated.tooltips.nation = "Same continent";
+      } else {
+        annotated.colors.nation = "grey"; // completely different
+      }
+    }
+
     annotated.colors.retired =
       player.retired === mystery.retired ? "green" : "grey";
     annotated.colors.battingHand =
       player.battingHand === mystery.battingHand ? "green" : "grey";
     annotated.colors.currentTeam =
       player.currentTeam === mystery.currentTeam ? "green" : "grey";
-    // ✅ Role coloring logic
+
+    // Role coloring logic
     if (player.role === mystery.role) {
       annotated.colors.role = "green";
     } else if (isRoleClose(player.role, mystery.role)) {
       annotated.colors.role = "orange";
+      annotated.tooltips.role = "Similar role";
     } else {
       annotated.colors.role = "grey";
     }
@@ -190,10 +228,14 @@ function App() {
     );
     annotated.colors.born =
       bornDiff === 0 ? "green" : bornDiff <= 2 ? "orange" : "grey";
+    if (bornDiff <= 2 && bornDiff !== 0)
+      annotated.tooltips.born = "Within 2 years";
 
     const matchDiff = Math.abs(player.totalMatches - mystery.totalMatches);
     annotated.colors.totalMatches =
       matchDiff === 0 ? "green" : matchDiff <= 5 ? "orange" : "grey";
+    if (matchDiff <= 5 && matchDiff !== 0)
+      annotated.tooltips.totalMatches = "Within 5 matches";
     return annotated;
   };
 

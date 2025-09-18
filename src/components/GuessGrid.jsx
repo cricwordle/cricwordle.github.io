@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Flag from "react-world-flags";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
 
 function GuessGrid({ guesses, mysteryPlayer }) {
   if (!mysteryPlayer) return null;
@@ -15,8 +17,8 @@ function GuessGrid({ guesses, mysteryPlayer }) {
       "Sri Lanka": "LK",
       Bangladesh: "BD",
       Ireland: "IE",
-      Scotland: "/images/scotland.png",  
-      UAE: "AE" 
+      Scotland: "/images/scotland.png",
+      UAE: "AE",
     };
     return map[nation] || null;
   };
@@ -115,22 +117,32 @@ function GuessGrid({ guesses, mysteryPlayer }) {
   // 🔹 Updated renderCell for animation
   const renderCell = (guess, key, content, colIndex, rowIndex) => {
     const colorClass = getCellColor(guess, key);
-    const tooltip = getTooltip(guess, key);
+    const tooltip = guess.tooltips?.[key] || null;
 
+    const wrapperProps = {
+      className: `guess-cell flip ${revealingRow === rowIndex ? "revealing" : ""}`,
+      style: {
+        "--cell-index": colIndex,
+        backgroundColor:
+          key === "name" && window.innerWidth <= 600
+            ? "#f0f0f0"
+            : bgColorMap[colorClass],
+      },
+    };
+
+    if (!tooltip) return <div {...wrapperProps}>{content}</div>;
+
+    // Wrap in Tippy so hint shows on hover (desktop) or tap (mobile)
     return (
-      <div
-        className={`guess-cell flip ${revealingRow === rowIndex ? "revealing" : ""}`}
-        style={{
-          "--cell-index": colIndex,
-          backgroundColor:
-            key === "name" && window.innerWidth <= 600
-              ? "#f0f0f0" // light grey for mobile
-              : bgColorMap[colorClass],
-        }}
-        {...(tooltip && { "data-tooltip": tooltip })}
+      <Tippy
+        content={tooltip}
+        delay={100}
+        arrow={true}
+        touch={true}
+        interactive={true}
       >
-        {content}
-      </div>
+        <div {...wrapperProps}>{content}</div>
+      </Tippy>
     );
   };
 
@@ -171,15 +183,13 @@ function GuessGrid({ guesses, mysteryPlayer }) {
                     alt="West Indies Flag"
                     style={{ width: "6vw", maxWidth: 40, height: "auto" }}
                   />
-                )
-                : guess.nation === "Scotland" ? (
+                ) : guess.nation === "Scotland" ? (
                   <img
-                    src="/images/scotland.png"  
+                    src="/images/scotland.png"
                     alt="Scotland Flag"
                     style={{ width: "6vw", maxWidth: 40, height: "auto" }}
                   />
-                ) 
-                : (
+                ) : (
                   <Flag
                     code={getFlagCode(guess.nation)}
                     style={{ width: "6vw", maxWidth: 40, height: "auto" }}
