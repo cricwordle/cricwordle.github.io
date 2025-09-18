@@ -664,8 +664,8 @@ footer .developer-credit {
   }
 }
 .guess-cell.flip.revealing {
-  animation: flipReveal 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  animation-delay: calc(var(--cell-index) * 0.2s); /* stagger like Wordle */
+  animation: flipReveal 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: calc(var(--cell-index) * 0.25s); /* stagger like Wordle */
   transform-style: preserve-3d;
   backface-visibility: hidden;
 }

@@ -6,6 +6,7 @@ import Confetti from "react-confetti";
 import ShareModal from "./components/ShareModal.jsx";
 import "./index.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import { getDailyPlayer } from "./utils/getDailyPlayer.js";
 
 const MAX_ATTEMPTS = 8;
 const MAX_GAMES_PER_DAY = 1;
@@ -52,7 +53,10 @@ function App() {
     const today = new Date().toDateString();
     const stored = JSON.parse(localStorage.getItem("gamesPlayed")) || {};
     setGamesPlayedToday(stored[today] || 0);
-    pickRandomPlayer();
+    // pickRandomPlayer();
+    const dailyPlayer = getDailyPlayer();
+    setMysteryPlayer(dailyPlayer);
+    setGuesses([]);
   }, []);
 
   useEffect(() => {
