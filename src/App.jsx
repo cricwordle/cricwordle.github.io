@@ -425,7 +425,7 @@ function App() {
               <strong>Great job! You've completed today's challenge.</strong>
             </p>
             <p className="limit-text">
-              Next mystery player will be available in:{" "}
+              New mystery player will be available in:{" "}
               <strong>{timeUntilReset}</strong>
             </p>
             <button
