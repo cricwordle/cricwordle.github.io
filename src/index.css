@@ -910,3 +910,32 @@ footer .developer-credit {
     color: #333; /* optional: text color */
   }
 }
+/* Make guessed answers scrollable without scrolling the page */
+.guess-grid-wrapper {
+  max-height: 400px; /* adjust to fit your design */
+  overflow-y: auto;  /* vertical scrolling */
+  padding-right: 4px; /* optional: prevent scrollbar overlap */
+  margin-bottom: 10px; /* space before sticky input */
+}
+
+/* Optional: scrollbar styling */
+.guess-grid-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.guess-grid-wrapper::-webkit-scrollbar-thumb {
+  background-color: #5c6bc0; /* blue scrollbar thumb */
+  border-radius: 3px;
+}
+
+.guess-grid-wrapper::-webkit-scrollbar-track {
+  background: #e0e0e0;
+}
+
+/* Keep header row sticky at the top of scrollable grid */
+.guess-row.header {
+  position: sticky;
+  top: 0;
+  background-color: #bbdefb;
+  z-index: 5; /* above other rows */
+}

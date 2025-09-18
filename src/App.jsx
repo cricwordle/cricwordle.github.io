@@ -77,6 +77,13 @@ function App() {
     }, 1000);
     return () => clearInterval(interval);
   }, []);
+  useEffect(() => {
+    const seen = localStorage.getItem("howToPlaySeen");
+    if (!seen) {
+      setShowHowToPlay(true);
+    }
+  }, []);
+
   // ---------------- Emoji Pattern Function ----------------
   const getEmojiPattern = () => {
     if (!guesses || guesses.length === 0) return "";
@@ -396,7 +403,10 @@ function App() {
             </ul>
             <button
               className="copy-button"
-              onClick={() => setShowHowToPlay(false)}
+              onClick={() => {
+                setShowHowToPlay(false);
+                localStorage.setItem("howToPlaySeen", "true");
+              }}
             >
               Close
             </button>
