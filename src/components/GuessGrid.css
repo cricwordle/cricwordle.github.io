@@ -158,3 +158,6 @@
   flex: 0 0 auto;
   perspective: 800px; /* critical for individual cell flips */
 }
+.guess-grid-wrapper {
+  padding-bottom: 60px;
+}

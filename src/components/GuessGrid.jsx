@@ -1,10 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Flag from "react-world-flags";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 
 function GuessGrid({ guesses, mysteryPlayer }) {
   if (!mysteryPlayer) return null;
+
+  const lastGuessRef = useRef(null);
+
+  // Scroll to the last guess whenever guesses update
+  useEffect(() => {
+    if (lastGuessRef.current) {
+      lastGuessRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  }, [guesses]);
 
   const getFlagCode = (nation) => {
     const map = {
@@ -161,7 +173,11 @@ function GuessGrid({ guesses, mysteryPlayer }) {
         </div>
 
         {guesses.map((guess, rowIndex) => (
-          <div key={rowIndex} className="guess-row">
+          <div
+            key={rowIndex}
+            className="guess-row"
+            ref={rowIndex === guesses.length - 1 ? lastGuessRef : null}
+          >
             {renderCell(guess, "name", guess.name, 0, rowIndex)}
             {renderCell(
               guess,
