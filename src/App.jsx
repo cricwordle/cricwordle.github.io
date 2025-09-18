@@ -408,7 +408,7 @@ function App() {
         <div className="overlay-message">
           <div className="limit-content">
             <p className="limit-text">
-              <strong>You've played {MAX_GAMES_PER_DAY} games today!</strong>
+              <strong>Great job! You've completed today's challenge.</strong>
             </p>
             <p className="limit-text">
               Next mystery player will be available in:{" "}
@@ -505,7 +505,7 @@ function App() {
             Share my score
           </button>
 
-          <button
+          {/* <button
             onClick={resetGame}
             style={{
               flex: "0 1 140px", // make same width as share button
@@ -528,7 +528,7 @@ function App() {
             }
           >
             Play Again
-          </button>
+          </button> */}
         </div>
       )}
 

@@ -396,3 +396,15 @@
     margin: auto; /* ensure vertical centering */
   }
 }
+
+/* Make Copy button green */
+.copy-btn {
+  background: linear-gradient(135deg, #43a047, #66bb6a); /* green gradient */
+  color: white;
+}
+
+/* When clicked/copied */
+.copy-btn.copied {
+  background: linear-gradient(135deg, #2e7d32, #43a047) !important; /* darker green */
+  color: white !important;
+}

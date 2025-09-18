@@ -8,7 +8,7 @@ function ShareModal({
   guesses,
   mysteryPlayer,
   maxAttempts = 8,
-  onPlayAgain,
+  // onPlayAgain,
   gamesPlayed,
   maxGames,
   emojiPattern
@@ -120,7 +120,7 @@ function ShareModal({
         >
           Share
         </button>
-        {/* Play Again Button */}
+        {/* Play Again Button
         {!hasHitLimit ? (
           <button
             className="copy-btn"
@@ -154,7 +154,7 @@ function ShareModal({
           >
             🚫 You've hit today's max limit of {maxGames} games!
           </p>
-        )}
+        )} */}
         <button
           onClick={copyToClipboard}
           className={`copy-btn ${copied ? "copied" : ""}`}
