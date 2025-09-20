@@ -11,7 +11,8 @@ function ShareModal({
   // onPlayAgain,
   gamesPlayed,
   maxGames,
-  emojiPattern
+  emojiPattern,
+  timeUntilReset,
 }) {
   const [copied, setCopied] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
@@ -51,7 +52,13 @@ function ShareModal({
       ? "X"
       : guesses.length;
 
-  const shareText = `Women's Cricket Wordle ${tries}/${maxAttempts}\n\n${emojiPattern}\n\nhttps://cricwordle.github.io/`;
+  const today = new Date();
+  const day = String(today.getDate()).padStart(2, "0");
+  const month = String(today.getMonth() + 1).padStart(2, "0"); // months are 0-indexed
+  const year = today.getFullYear();
+  const dateString = `${day}/${month}/${year}`;
+
+  const shareText = `Women's Cricket Wordle ${tries}/${maxAttempts}\n\n${dateString}\n\n${emojiPattern}\n\nhttps://cricwordle.github.io/`;
 
   const copyToClipboard = () => {
     const fallbackCopy = () => {
@@ -95,9 +102,20 @@ function ShareModal({
           <p>❌ Better luck next time!</p>
         )}
 
-        <p>
+        <div>
           The mystery player was: <strong>{mysteryPlayer.name}</strong>
-        </p>
+          {timeUntilReset && (
+            <div
+              style={{
+                marginTop: "10px",
+                fontWeight: "bold",
+                textAlign: "center",
+              }}
+            >
+              ⏳ New mystery player will be available in: {timeUntilReset}
+            </div>
+          )}
+        </div>
 
         <pre className="pattern">{shareText}</pre>
         <button

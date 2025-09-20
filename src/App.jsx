@@ -51,13 +51,73 @@ function App() {
 
   useEffect(() => {
     const today = new Date().toDateString();
+    const dailyPlayer = getDailyPlayer(); // get today's player
+
+    // Restore games played count
     const stored = JSON.parse(localStorage.getItem("gamesPlayed")) || {};
     setGamesPlayedToday(stored[today] || 0);
-    // pickRandomPlayer();
-    const dailyPlayer = getDailyPlayer();
+
+    // Get saved guesses & share state
+    const savedGuesses = JSON.parse(localStorage.getItem("dailyGuesses"));
+    const savedShare = JSON.parse(localStorage.getItem("shareState"));
+
+    if (
+      savedGuesses &&
+      savedGuesses.date === today &&
+      savedShare?.mysteryPlayerName === dailyPlayer.name
+    ) {
+      // ✅ Same day & same player → restore guesses
+      setGuesses(savedGuesses.guesses);
+      setShowPlayer(savedShare.showPlayer);
+      setCelebrate(savedShare.celebrate);
+      setShowShare(true); // allow sharing again
+    } else {
+      // 🚨 New day or new player → clear state
+      localStorage.removeItem("dailyGuesses");
+      localStorage.removeItem("shareState");
+      setGuesses([]);
+      setShowPlayer(false);
+      setCelebrate(false);
+      setShowShare(false);
+
+      // Optional: force reload if new player
+      if (
+        savedShare?.mysteryPlayerName &&
+        savedShare.mysteryPlayerName !== dailyPlayer.name
+      ) {
+        window.location.reload(); // reload to start fresh
+      }
+    }
+
     setMysteryPlayer(dailyPlayer);
-    setGuesses([]);
   }, []);
+
+  // Save guesses + date in localStorage so they persist for the day
+  useEffect(() => {
+    if (guesses.length > 0 && mysteryPlayer) {
+      const todayKey = new Date().toDateString();
+      localStorage.setItem(
+        "dailyGuesses",
+        JSON.stringify({ date: todayKey, guesses })
+      );
+
+      localStorage.setItem(
+        "shareState",
+        JSON.stringify({
+          mysteryPlayerName: mysteryPlayer.name,
+          guesses,
+          showPlayer,
+          celebrate,
+          date: todayKey, // <-- store date
+        })
+      );
+    }
+  }, [guesses, mysteryPlayer]);
+  useEffect(() => {
+    if (!celebrate) return;
+    const timer = setTimeout(() => setCelebrate(false), 5000);
+    return () => clearTimeout(timer);
+  }, [celebrate]);
 
   useEffect(() => {
     if (DISABLE_LIMIT) return;
@@ -478,6 +538,9 @@ function App() {
                   {new Date(mysteryPlayer.born).getFullYear()})
                 </>
               )}
+              <div>
+                New mystery player will be available in: {timeUntilReset}
+              </div>
             </div>
           )}
         </>
@@ -556,6 +619,7 @@ function App() {
         gamesPlayed={gamesPlayed}
         maxGames={MAX_GAMES_PER_DAY}
         emojiPattern={getEmojiPattern()}
+        timeUntilReset={timeUntilReset}
       />
       <footer
         style={{
