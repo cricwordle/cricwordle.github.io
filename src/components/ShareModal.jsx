@@ -97,7 +97,7 @@ function ShareModal({
         <h2>Share your score</h2>
 
         {guessedCorrectly ? (
-          <p>🎉 Congratulations! You guessed correctly!</p>
+          <p>🎉 Congratulations! You guessed correctly in {tries} {tries === 1 ? "move" : "moves"}!</p>
         ) : (
           <p>❌ Better luck next time!</p>
         )}
