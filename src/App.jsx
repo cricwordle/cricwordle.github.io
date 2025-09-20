@@ -522,27 +522,6 @@ function App() {
           )}
 
           <GuessGrid guesses={guesses} mysteryPlayer={mysteryPlayer} />
-
-          {(showPlayer || guesses.length === MAX_ATTEMPTS) && (
-            <div className="reveal-answer">
-              {showPlayer ? (
-                <>
-                  You guessed it! The mystery player was:{" "}
-                  <strong>{mysteryPlayer.name}</strong> (Born:{" "}
-                  {new Date(mysteryPlayer.born).getFullYear()})
-                </>
-              ) : (
-                <>
-                  Better luck next time! The mystery player was:{" "}
-                  <strong>{mysteryPlayer.name}</strong> (Born:{" "}
-                  {new Date(mysteryPlayer.born).getFullYear()})
-                </>
-              )}
-              <div>
-                New mystery player will be available in: {timeUntilReset}
-              </div>
-            </div>
-          )}
         </>
       )}
 
@@ -579,7 +558,7 @@ function App() {
               (e.currentTarget.style.transform = "translateY(0)")
             }
           >
-            Share my score
+            View Result
           </button>
 
           {/* <button
