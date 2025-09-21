@@ -1,0 +1,6 @@
+# Allow all search engines to index everything
+User-agent: *
+Allow: /
+
+# Specify location of your sitemap
+Sitemap: https://cricwordle.github.io/sitemap.xml

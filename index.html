@@ -61,7 +61,7 @@
       content="https://cricwordle.github.io/images/social-preview.png"
     />
 
-    <!-- Structured Data for Google -->
+    <!-- Structured Data for Google: Game -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -72,8 +72,38 @@
         "description": "A daily cricket wordle challenge celebrating Women's Cricket and the World Cup 2025.",
         "publisher": {
           "@type": "Organization",
-          "name": "Wicket Wispers"
+          "name": "Wicket Wispers",
+          "url": "https://cricwordle.github.io/"
+        },
+        "image": "https://cricwordle.github.io/images/social-preview.png",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Web",
+        "offers": {
+          "@type": "Offer",
+          "url": "https://cricwordle.github.io/",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "potentialAction": {
+          "@type": "PlayAction",
+          "target": "https://cricwordle.github.io/"
         }
+      }
+    </script>
+
+    <!-- Structured Data: Breadcrumb -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://cricwordle.github.io/"
+          }
+        ]
       }
     </script>
 
