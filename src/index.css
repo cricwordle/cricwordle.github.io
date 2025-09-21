@@ -939,3 +939,45 @@ footer .developer-credit {
   background-color: #bbdefb;
   z-index: 5; /* above other rows */
 }
+
+/* 📱 Mobile-only adjustments */
+@media (max-width: 600px) {
+  /* Shrink the mystery player image */
+  .player-image {
+    width: 70px;        /* smaller width */
+    height: 70px;       /* maintain square */
+    border-width: 2px;
+  }
+
+  /* Reduce extra space above/below the image */
+  .player-image-container {
+    margin-top: 4px;
+    margin-bottom: 8px;
+  }
+
+  /* Bring the grid closer to the image */
+  .guess-grid {
+    margin-top: 8px;
+  }
+
+  /* Tighten container padding for more vertical space */
+  .container {
+    padding-top: 6px;
+    padding-bottom: 70px; /* keeps space for sticky input */
+  }
+
+  /* Reduce title spacing */
+  h1 {
+    margin-bottom: 6px;
+  }
+
+  /* Ensure the autocomplete dropdown fits small screens */
+  .autocomplete-list {
+    max-height: 550px;
+    overflow-y: auto;
+  }
+    .subtitle {
+    font-size: 20px; /* adjust as needed */
+    margin-bottom: 6px; /* tighten spacing if necessary */
+  }
+}
