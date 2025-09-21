@@ -1,26 +1,18 @@
 /* ------------------ Guess Grid ------------------ */
 .guess-grid-wrapper {
-  overflow-x: auto;
   width: 100%;
-  -webkit-overflow-scrolling: touch;
-  max-height: 400px; /* scrollable without page scroll */
+  max-height: 400px;       /* vertical scroll */
+  overflow-x: auto;        /* horizontal scroll if needed */
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   padding-right: 4px;
   margin-bottom: 10px;
 }
 
-.guess-grid-wrapper::-webkit-scrollbar {
-  width: 6px;
-}
-
-.guess-grid-wrapper::-webkit-scrollbar-thumb {
-  background-color: #5c6bc0;
-  border-radius: 3px;
-}
-
-.guess-grid-wrapper::-webkit-scrollbar-track {
-  background: #e0e0e0;
-}
+/* Scrollbar styling */
+.guess-grid-wrapper::-webkit-scrollbar { width: 6px; }
+.guess-grid-wrapper::-webkit-scrollbar-thumb { background-color: #5c6bc0; border-radius: 3px; }
+.guess-grid-wrapper::-webkit-scrollbar-track { background: #e0e0e0; }
 
 .guess-grid {
   display: flex;
@@ -80,6 +72,7 @@
   backface-visibility: hidden;
 }
 
+/* Animations */
 @keyframes flipReveal {
   0% { transform: rotateX(90deg); opacity: 0; }
   50% { transform: rotateX(-10deg); opacity: 1; }
@@ -91,10 +84,67 @@
   100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Mobile-specific adjustments */
+/* ------------------ Mobile Adjustments ------------------ */
 @media (max-width: 600px) {
-  .guess-grid-wrapper { overflow-x: visible; padding-bottom: 10px; }
-  .guess-row, .mobile-header { display: grid; grid-template-columns: repeat(7, 1fr); grid-template-rows: auto auto; gap: 2px; width: 100%; box-sizing: border-box; }
-  .guess-row > .guess-cell:first-child, .mobile-header > .guess-cell:first-child { grid-column: 1 / -1; font-weight: bold; font-size: 12px; padding: 4px 6px; background-color: #f0f0f0; text-align: left; border-radius: 4px; line-height: 1.2; }
-  .guess-row > .guess-cell:not(:first-child), .mobile-header > .guess-cell:not(:first-child) { font-size: 9px; padding: 4px 2px; text-align: center; word-break: break-word; }
+  /* Full-width wrapper without horizontal scroll */
+  .guess-grid-wrapper {
+    overflow-x: visible;
+    padding-bottom: 10px;
+  }
+
+  /* Use compact grid for mobile */
+  .guess-row, .mobile-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: auto auto;
+    gap: 2px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Player Name (first cell) spans full width */
+  .guess-row > .guess-cell:first-child,
+  .mobile-header > .guess-cell:first-child {
+    grid-column: 1 / -1;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 4px 6px;
+    background-color: #f0f0f0;
+    text-align: left;
+    border-radius: 4px;
+    line-height: 1.2;
+    color: #333;
+  }
+
+  /* Remaining cells */
+  .guess-row > .guess-cell:not(:first-child),
+  .mobile-header > .guess-cell:not(:first-child) {
+    font-size: 9px;
+    padding: 4px 2px;
+    text-align: center;
+    word-break: break-word;
+  }
+
+  /* Make all cells flex to center content */
+  .guess-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Left-align only player name */
+  .guess-row:not(.mobile-header) .guess-cell:first-child {
+    justify-content: flex-start;
+    text-align: left;
+    padding-left: 8px;
+    font-size: 13px;
+    min-height: 30px;
+  }
+
+  /* Compact row spacing */
+  .guess-row { gap: 0; margin-bottom: 1px; }
+  .guess-cell { padding: 2px 4px; font-size: 11px; border-radius: 0 !important; }
+
+  /* Ensure sticky input at bottom doesn't overlap grid */
+  .container { padding-bottom: 80px; }
 }
