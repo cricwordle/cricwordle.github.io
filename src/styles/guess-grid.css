@@ -1,0 +1,100 @@
+/* ------------------ Guess Grid ------------------ */
+.guess-grid-wrapper {
+  overflow-x: auto;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+  max-height: 400px; /* scrollable without page scroll */
+  overflow-y: auto;
+  padding-right: 4px;
+  margin-bottom: 10px;
+}
+
+.guess-grid-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.guess-grid-wrapper::-webkit-scrollbar-thumb {
+  background-color: #5c6bc0;
+  border-radius: 3px;
+}
+
+.guess-grid-wrapper::-webkit-scrollbar-track {
+  background: #e0e0e0;
+}
+
+.guess-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px auto;
+  max-width: 950px;
+  width: 95%;
+}
+
+.guess-row {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 6px;
+  justify-items: stretch;
+  margin-bottom: 6px;
+  animation: fadeSlideIn 0.3s ease forwards;
+}
+
+.guess-row.header {
+  background-color: #bbdefb;
+  color: #0d47a1;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 14px;
+  border: 1px solid #90caf9;
+  border-radius: 6px 6px 0 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.guess-cell {
+  padding: 6px 8px;
+  min-height: 36px;
+  border-radius: 0 !important;
+  font-size: 13px;
+  text-align: center;
+  color: white;
+  background-color: #9e9e9e;
+  border: 1px solid #ccc;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.green { background-color: #6aaa64; color: white; }
+.orange { background-color: #f39c12; color: white; }
+.grey { background-color: #787c7e; color: white; }
+
+/* Flip animation */
+.guess-cell.flip.revealing {
+  animation: flipReveal 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: calc(var(--cell-index) * 0.25s);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+@keyframes flipReveal {
+  0% { transform: rotateX(90deg); opacity: 0; }
+  50% { transform: rotateX(-10deg); opacity: 1; }
+  100% { transform: rotateX(0deg); opacity: 1; }
+}
+
+@keyframes fadeSlideIn {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 600px) {
+  .guess-grid-wrapper { overflow-x: visible; padding-bottom: 10px; }
+  .guess-row, .mobile-header { display: grid; grid-template-columns: repeat(7, 1fr); grid-template-rows: auto auto; gap: 2px; width: 100%; box-sizing: border-box; }
+  .guess-row > .guess-cell:first-child, .mobile-header > .guess-cell:first-child { grid-column: 1 / -1; font-weight: bold; font-size: 12px; padding: 4px 6px; background-color: #f0f0f0; text-align: left; border-radius: 4px; line-height: 1.2; }
+  .guess-row > .guess-cell:not(:first-child), .mobile-header > .guess-cell:not(:first-child) { font-size: 9px; padding: 4px 2px; text-align: center; word-break: break-word; }
+}

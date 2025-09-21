@@ -1,0 +1,21 @@
+/* ------------------ Footer ------------------ */
+footer {
+  margin-top: 30px;
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+}
+
+footer a {
+  color: #3949ab;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+footer .developer-credit {
+  margin-left: 5px;
+  font-weight: bold;
+}

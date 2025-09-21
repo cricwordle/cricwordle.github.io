@@ -1,0 +1,25 @@
+.player-image-container {
+  margin: 20px 0;
+}
+
+.player-image {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #5c6bc0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .player-image {
+    width: 70px;
+    height: 70px;
+    border-width: 2px;
+  }
+  .player-image-container {
+    margin-top: 4px;
+    margin-bottom: 8px;
+  }
+}

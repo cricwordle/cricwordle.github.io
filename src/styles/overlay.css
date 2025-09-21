@@ -1,0 +1,94 @@
+/* ------------------ Overlay & How to Play ------------------ */
+.overlay-message {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 9999;
+  text-align: center;
+}
+
+.how-to-play-content {
+  background-color: #f0f4f8;
+  color: #333;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  text-align: left;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.how-to-play-content h2 {
+  text-align: center;
+}
+
+.how-to-play-content ul {
+  padding-left: 20px;
+}
+
+.how-to-play-content button.copy-button {
+  margin-top: 15px;
+  background: linear-gradient(135deg, #3949ab, #5c6bc0);
+}
+
+.close-overlay-button {
+  background-color: #3949ab;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.overlay-message .copy-button,
+.close-overlay-button:hover {
+  background-color: #5c6bc0;
+  transform: translateY(-2px);
+}
+
+/* Mobile overlay adjustments */
+@media (max-width: 768px) {
+  .how-to-play-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    font-size: 14px;
+    z-index: 1000;
+  }
+
+  .how-to-play-content h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .how-to-play-content ul li {
+    margin-bottom: 10px;
+  }
+
+  .copy-button {
+    font-size: 16px;
+    padding: 10px 16px;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 8px;
+  }
+}

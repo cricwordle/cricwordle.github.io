@@ -1,0 +1,66 @@
+/* ------------------ Input & Guess Button ------------------ */
+.input-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.guess-input {
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  font-size: 16px;
+  width: 280px;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.guess-input:focus {
+  border-color: #3949ab;
+  box-shadow: 0 0 8px rgba(63, 81, 181, 0.4);
+}
+
+.guess-button {
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(135deg, #3949ab, #5c6bc0);
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.guess-button:hover {
+  background: linear-gradient(135deg, #1a237e, #3949ab);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Sticky input wrapper (for mobile) */
+.sticky-input-wrapper {
+  position: sticky;
+  top: 10px;
+  z-index: 1000;
+  background: #fff;
+  padding: 10px 0;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 600px) {
+  .sticky-input-wrapper {
+    position: sticky;
+    bottom: 0;
+    top: auto;
+    z-index: 100;
+    background: #fff;
+    padding: 10px;
+  }
+}

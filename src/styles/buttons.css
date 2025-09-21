@@ -1,0 +1,95 @@
+/* ------------------ Share & Play Again Buttons ------------------ */
+.play-again-button,
+.share-play-again-button {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  margin: 12px auto;
+  padding: 14px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.play-again-button:hover,
+.share-play-again-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.play-again-button {
+  background: linear-gradient(135deg, #43a047, #66bb6a);
+  color: white;
+}
+
+.share-play-again-button {
+  background: linear-gradient(135deg, #3949ab, #5c6bc0);
+  color: white;
+}
+
+/* Share Modal */
+.share-modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.share-button {
+  background: linear-gradient(135deg, #3949ab, #5c6bc0);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  width: 100%;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.share-button:hover {
+  transform: translateY(-2px);
+}
+
+.play-again-button {
+  background: #4caf50;
+  color: white;
+  font-size: 16px;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  width: 100%;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .play-again-button,
+  .share-play-again-button {
+    width: 95%;
+    font-size: 15px;
+    padding: 16px 0;
+  }
+
+  .share-modal-content {
+    padding: 16px;
+  }
+
+  .share-button,
+  .play-again-button {
+    font-size: 15px;
+    padding: 12px;
+  }
+}
