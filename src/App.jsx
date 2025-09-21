@@ -149,42 +149,43 @@ function App() {
   }, []);
 
   // ---------------- Emoji Pattern Function ----------------
-  const getEmojiPattern = () => {
-    if (!guesses || guesses.length === 0) return "";
+  const getEmojiPattern = (guessesArray = guesses) => {
+    if (!guessesArray || guessesArray.length === 0) return "";
 
-    return guesses
-      .map((player) => {
-        const keys = [
-          "name",
-          "role",
-          "nation",
-          "battingHand",
-          "currentTeam",
-          "retired",
-          "born",
-          "totalMatches",
-        ];
-        return keys
-          .map((key) => {
-            const color = player.colors[key];
+    const fields = [
+      "name",
+      "nation",
+      "role",
+      "retired",
+      "born",
+      "battingHand",
+      "totalMatches",
+      "currentTeam",
+    ];
+
+    return guessesArray
+      .map((player) =>
+        fields
+          .map((field) => {
+            const color = player.colors[field] || "grey";
             switch (color) {
               case "green":
                 return "🟩";
               case "orange":
-                return "🟨"; // better to use 🟨 instead of 🟧 for orange
+                return "🟨";
               case "grey":
                 return "⬛";
               default:
                 return "⬛";
             }
           })
-          .join("");
-      })
+          .join("")
+      )
       .join("\n");
   };
 
   const pickRandomPlayer = () => {
-    // 🚫 Stop starting a 4th game if daily limit reached
+    // 🚫 Stop starting a new game if daily limit reached
     if (!DISABLE_LIMIT && gamesPlayedToday >= MAX_GAMES_PER_DAY) {
       setHideLimitMessage(false); // show overlay
       return; // prevent picking a new mystery player
@@ -204,8 +205,7 @@ function App() {
     // Increment games played
     setGamesPlayed((prev) => prev + 1);
 
-    // ✅ Your existing logic (kept as-is)
-    pickRandomPlayer(); // picks a new player and clears guesses
+    pickRandomPlayer(); // pick a new player and clear guesses
     setShowPlayer(false); // hide the previous answer
     setShowShare(false); // close share modal
     setCelebrate(false); // stop confetti
@@ -300,18 +300,18 @@ function App() {
     annotated.colors.born =
       bornDiff === 0 ? "green" : bornDiff <= 2 ? "orange" : "grey";
     if (bornDiff <= 2 && bornDiff !== 0)
-      annotated.tooltips.born = "Within 2 years";
+      annotated.tooltips.born = "Close! Within 2 years";
 
     const matchDiff = Math.abs(player.totalMatches - mystery.totalMatches);
     annotated.colors.totalMatches =
-      matchDiff === 0 ? "green" : matchDiff <= 5 ? "orange" : "grey";
-    if (matchDiff <= 5 && matchDiff !== 0)
-      annotated.tooltips.totalMatches = "Within 5 matches";
+      matchDiff === 0 ? "green" : matchDiff <= 10 ? "orange" : "grey";
+    if (matchDiff <= 10 && matchDiff !== 0)
+      annotated.tooltips.totalMatches = "Close! Within 10 matches";
     return annotated;
   };
 
   const handleGuess = (guessName) => {
-    // 🚨 Stop and show overlay if daily limit reached
+    // Stop and show overlay if daily limit reached
     if (
       !DISABLE_LIMIT &&
       gamesPlayedToday >= MAX_GAMES_PER_DAY &&
@@ -329,9 +329,9 @@ function App() {
     const annotatedPlayer = annotateGuess(player);
     const newGuesses = [...guesses, annotatedPlayer];
     setGuesses(newGuesses);
-    // 🟢 Hide mobile keyboard
+    // Hide mobile keyboard
     if (inputRef.current) inputRef.current.blur();
-    // 🟢 Scroll latest guess into view
+    // Scroll latest guess into view
     const lastRow = document.querySelector(".guess-row:last-child");
     if (lastRow)
       lastRow.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -347,10 +347,6 @@ function App() {
       setShowShare(true);
       incrementGamesPlayed();
     }
-  };
-
-  const handleSelectPlayer = (player) => {
-    handleGuess(player.name);
   };
 
   if (!mysteryPlayer) return <div>Loading...</div>;
@@ -597,7 +593,7 @@ function App() {
         onPlayAgain={resetGame}
         gamesPlayed={gamesPlayed}
         maxGames={MAX_GAMES_PER_DAY}
-        emojiPattern={getEmojiPattern()}
+        emojiPattern={getEmojiPattern(guesses)}
         timeUntilReset={timeUntilReset}
       />
       <footer

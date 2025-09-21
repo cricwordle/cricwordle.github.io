@@ -3,24 +3,32 @@ import React from "react";
 function ShareButton({ guesses, mysteryPlayer }) {
   const generateEmojiGrid = () => {
     if (!guesses.length) return "";
-
     const fields = [
-      "nation",
+      "name",
       "role",
+      "nation",
+      "battingHand",
+      "currentTeam",
       "retired",
       "born",
-      "battingHand",
       "totalMatches",
-      "currentTeam",
     ];
 
     let grid = guesses
       .map((player) =>
         fields
           .map((field) => {
-            if (player[field] === mysteryPlayer[field]) return "🟩";
-            if (player[field] !== mysteryPlayer[field]) return "🟨";
-            return "⬜";
+            const color = player.colors[field] || "grey";
+            switch (color) {
+              case "green":
+                return "🟩";
+              case "orange":
+                return "🟨";
+              case "grey":
+                return "⬛";
+              default:
+                return "⬛";
+            }
           })
           .join("")
       )
