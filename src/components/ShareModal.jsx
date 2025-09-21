@@ -26,12 +26,12 @@ function ShareModal({
 
     const lastGuess = guesses[guesses.length - 1];
     if (lastGuess.name === mysteryPlayer.name) {
-      // ✅ Show confetti only if the most recent guess is correct
+      // Show confetti only if the most recent guess is correct
       setShowConfetti(true);
       const timer = setTimeout(() => setShowConfetti(false), 6000);
       return () => clearTimeout(timer);
     } else {
-      // ❌ Hide confetti for wrong guesses
+      // Hide confetti for wrong guesses
       setShowConfetti(false);
     }
   }, [show, guesses, mysteryPlayer.name]);
@@ -42,11 +42,6 @@ function ShareModal({
     (player) => player.name === mysteryPlayer.name
   );
 
-  const yearDiff = (date1, date2) => {
-    const y1 = new Date(date1).getFullYear();
-    const y2 = new Date(date2).getFullYear();
-    return Math.abs(y1 - y2);
-  };
   const tries =
     guesses.find((g) => g.name === mysteryPlayer.name) === undefined
       ? "X"
@@ -54,7 +49,7 @@ function ShareModal({
 
   const today = new Date();
   const day = String(today.getDate()).padStart(2, "0");
-  const month = String(today.getMonth() + 1).padStart(2, "0"); // months are 0-indexed
+  const month = String(today.getMonth() + 1).padStart(2, "0");
   const year = today.getFullYear();
   const dateString = `${day}/${month}/${year}`;
 
@@ -97,7 +92,10 @@ function ShareModal({
         <h2>Share your score</h2>
 
         {guessedCorrectly ? (
-          <p>🎉 Congratulations! You guessed correctly in {tries} {tries === 1 ? "move" : "moves"}!</p>
+          <p>
+            🎉 Congratulations! You guessed correctly in {tries}{" "}
+            {tries === 1 ? "move" : "moves"}!
+          </p>
         ) : (
           <p>❌ Better luck next time!</p>
         )}

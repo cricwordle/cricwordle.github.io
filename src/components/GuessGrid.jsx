@@ -108,25 +108,7 @@ function GuessGrid({ guesses, mysteryPlayer }) {
     }
   };
 
-  const getTooltip = (guess, key) => {
-    switch (key) {
-      case "born": {
-        const diff = Math.abs(
-          new Date(guess.born).getFullYear() -
-            new Date(mysteryPlayer.born).getFullYear()
-        );
-        return diff > 0 ? `Year difference: ${diff}` : null;
-      }
-      case "totalMatches": {
-        const diff = Math.abs(guess.totalMatches - mysteryPlayer.totalMatches);
-        return diff > 0 ? `Difference: ${diff}` : null;
-      }
-      default:
-        return null;
-    }
-  };
-
-  // 🔹 Updated renderCell for animation
+  // renderCell for animation
   const renderCell = (guess, key, content, colIndex, rowIndex) => {
     const colorClass = getCellColor(guess, key);
     const tooltip = guess.tooltips?.[key] || null;
