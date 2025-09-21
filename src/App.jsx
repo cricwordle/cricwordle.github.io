@@ -74,13 +74,27 @@ function App() {
       savedGuesses.date === today &&
       savedShare?.mysteryPlayerName === dailyPlayer.name
     ) {
-      // ✅ Same day & same player → restore guesses
+      // Same day & same player → restore guesses
       setGuesses(savedGuesses.guesses);
-      setShowPlayer(savedShare.showPlayer);
-      setCelebrate(savedShare.celebrate);
-      setShowShare(true); // allow sharing again
+
+      const hasWon = savedGuesses.guesses.some(
+        (g) => g.name === dailyPlayer.name
+      );
+      const hasLost = savedGuesses.guesses.length >= MAX_ATTEMPTS;
+
+      if (hasWon || hasLost) {
+        // Reveal player & celebrate only if game over
+        setShowPlayer(true);
+        setCelebrate(hasWon);
+        setShowShare(true);
+      } else {
+        // Resume ongoing game without revealing
+        setShowPlayer(false);
+        setCelebrate(false);
+        setShowShare(false);
+      }
     } else {
-      // 🚨 New day or new player → clear state
+      // New day or new player → clear state
       localStorage.removeItem("dailyGuesses");
       localStorage.removeItem("shareState");
       setGuesses([]);
@@ -88,7 +102,7 @@ function App() {
       setCelebrate(false);
       setShowShare(false);
 
-      // Optional: force reload if new player
+      // Force reload if new player
       if (
         savedShare?.mysteryPlayerName &&
         savedShare.mysteryPlayerName !== dailyPlayer.name
@@ -116,11 +130,11 @@ function App() {
           guesses,
           showPlayer,
           celebrate,
-          date: todayKey, // <-- store date
+          date: todayKey,
         })
       );
     }
-  }, [guesses, mysteryPlayer]);
+  }, [guesses, mysteryPlayer, showPlayer, celebrate]);
   useEffect(() => {
     if (!celebrate) return;
     const timer = setTimeout(() => setCelebrate(false), 5000);
@@ -193,7 +207,7 @@ function App() {
   };
 
   const pickRandomPlayer = () => {
-    // 🚫 Stop starting a new game if daily limit reached
+    // Stop starting a new game if daily limit reached
     if (!DISABLE_LIMIT && gamesPlayedToday >= MAX_GAMES_PER_DAY) {
       setHideLimitMessage(false); // show overlay
       return; // prevent picking a new mystery player
@@ -202,11 +216,11 @@ function App() {
     setMysteryPlayer(players[randomIndex]);
     setGuesses([]);
   };
-  // Modify your existing resetGame
+  // Modify existing resetGame
   const resetGame = () => {
     if (gamesPlayed >= MAX_GAMES_PER_DAY) {
       // Show max limit popup instead of resetting
-      setShowShare(true); // Reopen the ShareModal with the limit message
+      setShowShare(true); // Reopen ShareModal with the limit message
       return;
     }
 
@@ -235,10 +249,9 @@ function App() {
     const g = guessRole.toLowerCase().trim();
     const m = mysteryRole.toLowerCase().trim();
 
-    // Exact match handled elsewhere
     if (g === m) return false;
 
-    // Extract main type
+    // Extract role type
     const extractType = (role) => {
       if (role.includes("allrounder")) {
         return "allrounder";
@@ -270,7 +283,6 @@ function App() {
 
     annotated.colors.name = player.name === mystery.name ? "green" : "grey";
 
-    // Nation coloring logic with continent hint
     if (player.nation === mystery.nation) {
       annotated.colors.nation = "green";
     } else {
