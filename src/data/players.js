@@ -1326,9 +1326,9 @@ players.push(
     battingHand: "Right",
     totalMatches: 277,
     currentTeam: "DC",
-    image: ""
+    image: "",
   },
-    {
+  {
     name: "Dane van Niekerk",
     nation: "South Africa",
     role: "Allrounder (Right-arm leg spin)",
@@ -1337,9 +1337,9 @@ players.push(
     battingHand: "Right",
     totalMatches: 194,
     currentTeam: "RCB",
-    image: ""
+    image: "",
   },
-    {
+  {
     name: "Mel Jones",
     nation: "Australia",
     role: "Top-order Batter",
@@ -1348,9 +1348,9 @@ players.push(
     battingHand: "Right",
     totalMatches: 66,
     currentTeam: "—",
-    image: ""
+    image: "",
   },
-    {
+  {
     name: "Lizelle Lee",
     nation: "South Africa",
     role: "WK Batter",
@@ -1358,8 +1358,8 @@ players.push(
     born: "1992-04-02",
     battingHand: "Right",
     totalMatches: 184,
-    currentTeam: "—"
-  },
+    currentTeam: "—",
+  }
 );
 players.push(
   {
@@ -1371,7 +1371,7 @@ players.push(
     battingHand: "Right",
     totalMatches: 128,
     currentTeam: "UPW",
-    image: ""
+    image: "",
   },
   {
     name: "Suzie Bates",
@@ -1382,7 +1382,7 @@ players.push(
     battingHand: "Right",
     totalMatches: 348,
     currentTeam: "—",
-    image: ""
+    image: "",
   },
   {
     name: "Lauren Filer",
@@ -1393,7 +1393,7 @@ players.push(
     battingHand: "Right",
     totalMatches: 35,
     currentTeam: "—",
-    image: ""
+    image: "",
   },
   {
     name: "Maia Bouchier",
@@ -1404,7 +1404,7 @@ players.push(
     battingHand: "Right",
     totalMatches: 65,
     currentTeam: "—",
-    image: ""
+    image: "",
   },
   {
     name: "Shantha Rangaswamy",
@@ -1415,7 +1415,7 @@ players.push(
     battingHand: "Right",
     totalMatches: 35,
     currentTeam: "—",
-    image: ""
+    image: "",
   },
   {
     name: "Gaby Lewis",
@@ -1426,7 +1426,7 @@ players.push(
     battingHand: "Right",
     totalMatches: 164,
     currentTeam: "—",
-    image: ""
+    image: "",
   },
   {
     name: "Nahida Akter",
@@ -1437,7 +1437,7 @@ players.push(
     battingHand: "Right",
     totalMatches: 148,
     currentTeam: "—",
-    image: ""
+    image: "",
   },
   {
     name: "Sadia Iqbal",
@@ -1448,7 +1448,7 @@ players.push(
     battingHand: "Left",
     totalMatches: 78,
     currentTeam: "—",
-    image: ""
+    image: "",
   },
   {
     name: "Afy Fletcher",
@@ -1459,7 +1459,7 @@ players.push(
     battingHand: "Right",
     totalMatches: 188,
     currentTeam: "—",
-    image: ""
+    image: "",
   },
   {
     name: "Nonkululeko Mlaba",
@@ -1470,7 +1470,7 @@ players.push(
     battingHand: "Right",
     totalMatches: 102,
     currentTeam: "—",
-    image: ""
+    image: "",
   },
   {
     name: "Orla Prendergast",
@@ -1481,7 +1481,7 @@ players.push(
     battingHand: "Right",
     totalMatches: 58,
     currentTeam: "—",
-    image: ""
+    image: "",
   },
   {
     name: "Nadine de Klerk",
@@ -1492,37 +1492,36 @@ players.push(
     battingHand: "Right",
     totalMatches: 119,
     currentTeam: "MI",
-    image: ""
+    image: "",
   },
   {
-  name: "Kathryn Bryce",
-  nation: "Scotland",
-  role: "Allrounder (Right-arm pace)",
-  retired: "No",
-  born: "1997-11-17",
-  battingHand: "Right",
-  totalMatches: 59,       
-  currentTeam: "GG", 
-},
-{
-  name: "Sarah Bryce",
-  nation: "Scotland",
-  role: "WK Batter",
-  retired: "No",
-  born: "2000-01-08",
-  battingHand: "Right",
-  totalMatches: 68,         
-  currentTeam: "DC",  
-},
-{
-  name: "Esha Oza",
-  nation: "UAE",
-  role: "Allrounder (Off spin)",
-  retired: "No",
-  born: "1998-08-01",
-  battingHand: "Right",
-  totalMatches: 93,        
-  currentTeam: "—",        
-}
+    name: "Kathryn Bryce",
+    nation: "Scotland",
+    role: "Allrounder (Right-arm pace)",
+    retired: "No",
+    born: "1997-11-17",
+    battingHand: "Right",
+    totalMatches: 59,
+    currentTeam: "GG",
+  },
+  {
+    name: "Sarah Bryce",
+    nation: "Scotland",
+    role: "WK Batter",
+    retired: "No",
+    born: "2000-01-08",
+    battingHand: "Right",
+    totalMatches: 68,
+    currentTeam: "DC",
+  },
+  {
+    name: "Esha Oza",
+    nation: "UAE",
+    role: "Allrounder (Off spin)",
+    retired: "No",
+    born: "1998-08-01",
+    battingHand: "Right",
+    totalMatches: 93,
+    currentTeam: "—",
+  }
 );
-

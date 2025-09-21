@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import '../styles/share-modal.css';
+import "../styles/share-modal.css";
 import Confetti from "react-confetti";
 
 function ShareModal({

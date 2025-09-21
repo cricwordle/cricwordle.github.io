@@ -405,6 +405,10 @@
 
 /* When clicked/copied */
 .copy-btn.copied {
-  background: linear-gradient(135deg, #2e7d32, #43a047) !important; /* darker green */
+  background: linear-gradient(
+    135deg,
+    #2e7d32,
+    #43a047
+  ) !important; /* darker green */
   color: white !important;
 }

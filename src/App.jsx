@@ -6,16 +6,15 @@ import Confetti from "react-confetti";
 import ShareModal from "./components/ShareModal.jsx";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { getDailyPlayer } from "./utils/getDailyPlayer.js";
-import './styles/global.css';
-import './styles/topbar.css';
-import './styles/player.css';
-import './styles/guess-grid.css';
-import './styles/input.css';
-import './styles/autocomplete.css';
-import './styles/overlay.css';
-import './styles/buttons.css';
-import './styles/footer.css';
-
+import "./styles/global.css";
+import "./styles/topbar.css";
+import "./styles/player.css";
+import "./styles/guess-grid.css";
+import "./styles/input.css";
+import "./styles/autocomplete.css";
+import "./styles/overlay.css";
+import "./styles/buttons.css";
+import "./styles/footer.css";
 
 const MAX_ATTEMPTS = 8;
 const MAX_GAMES_PER_DAY = 1;

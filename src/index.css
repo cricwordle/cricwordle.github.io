@@ -913,7 +913,7 @@ footer .developer-credit {
 /* Make guessed answers scrollable without scrolling the page */
 .guess-grid-wrapper {
   max-height: 400px; /* adjust to fit your design */
-  overflow-y: auto;  /* vertical scrolling */
+  overflow-y: auto; /* vertical scrolling */
   padding-right: 4px; /* optional: prevent scrollbar overlap */
   margin-bottom: 10px; /* space before sticky input */
 }
@@ -944,8 +944,8 @@ footer .developer-credit {
 @media (max-width: 600px) {
   /* Shrink the mystery player image */
   .player-image {
-    width: 70px;        /* smaller width */
-    height: 70px;       /* maintain square */
+    width: 70px; /* smaller width */
+    height: 70px; /* maintain square */
     border-width: 2px;
   }
 
@@ -976,7 +976,7 @@ footer .developer-credit {
     max-height: 550px;
     overflow-y: auto;
   }
-    .subtitle {
+  .subtitle {
     font-size: 20px; /* adjust as needed */
     margin-bottom: 6px; /* tighten spacing if necessary */
   }

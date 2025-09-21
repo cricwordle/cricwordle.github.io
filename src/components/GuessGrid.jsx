@@ -40,7 +40,7 @@ function GuessGrid({ guesses, mysteryPlayer }) {
     grey: "#787c7e",
   };
 
-  // 🔹 New state for flip animation
+  // Flip animation
   const [revealingRow, setRevealingRow] = useState(null);
 
   useEffect(() => {
@@ -126,7 +126,7 @@ function GuessGrid({ guesses, mysteryPlayer }) {
 
     if (!tooltip) return <div {...wrapperProps}>{content}</div>;
 
-    // Wrap in Tippy so hint shows on hover (desktop) or tap (mobile)
+    // Wrap in Tippy for hints on hover (desktop) and tap (mobile)
     return (
       <Tippy
         content={tooltip}
