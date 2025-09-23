@@ -188,6 +188,7 @@ function App() {
     return guessesArray
       .map((player) =>
         fields
+          .slice(1)
           .map((field) => {
             const color = player.colors[field] || "grey";
             switch (color) {

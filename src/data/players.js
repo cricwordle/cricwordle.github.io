@@ -105,7 +105,7 @@ export const players = [
     role: "Left-arm spin Bowler",
     retired: "No",
     born: "1998-01-17",
-    battingHand: "Left",
+    battingHand: "Right",
     totalMatches: 54,
     currentTeam: "RCB",
   },
