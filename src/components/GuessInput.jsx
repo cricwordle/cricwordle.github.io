@@ -22,7 +22,7 @@ export default function GuessInput({
       .filter((p) => p.name.toLowerCase().includes(value.toLowerCase()))
       .slice(0, 5);
     setFilteredPlayers(filtered);
-    setHighlightIndex(-1);
+    if (filtered.length === 0) setHighlightIndex(-1);
   }, [value, players]);
 
   const handleSelect = (name) => {
@@ -71,12 +71,15 @@ export default function GuessInput({
       </div>
 
       {filteredPlayers.length > 0 && (
-        <ul className="autocomplete-list">
+        <ul
+          className="autocomplete-list"
+          onMouseDown={(e) => e.preventDefault()}
+        >
           {filteredPlayers.map((p, idx) => (
             <li
               key={p.name}
               className={`autocomplete-item ${highlightIndex === idx ? "highlighted" : ""}`}
-              onClick={() => handleSelect(p.name)}
+              onMouseDown={() => handleSelect(p.name)}
             >
               {p.name}
             </li>

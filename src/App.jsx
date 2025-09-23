@@ -475,6 +475,7 @@ function App() {
                   Grey = Wrong
                 </span>
               </li>
+              <li>Hover or click on the Orange tiles for extra hints.</li>
               <li style={{ color: "#555", fontStyle: "italic" }}>
                 Disclaimer: For simplicity, not all current or retired players
                 are included in the dataset. If you attempt to guess a player
