@@ -530,7 +530,9 @@ function App() {
           {!showPlayer && attemptsRemaining > 0 && !showShare && (
             <GuessInput
               onGuess={handleGuess}
-              players={players}
+              players={players.filter(
+                (p) => !guesses.some((g) => g.name === p.name)
+              )}
               value={guessInput}
               setValue={setGuessInput}
               inputRef={inputRef}
