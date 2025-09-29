@@ -2,7 +2,7 @@ export const players = [
   {
     name: "Smriti Mandhana",
     nation: "India",
-    role: "Top-order Batter",
+    role: "Batter",
     retired: "No",
     born: "1996-07-18",
     battingHand: "Left",
@@ -12,7 +12,7 @@ export const players = [
   {
     name: "Shafali Verma",
     nation: "India",
-    role: "Top-order Batter",
+    role: "Batter",
     retired: "No",
     born: "2004-01-28",
     battingHand: "Right",
@@ -22,7 +22,7 @@ export const players = [
   {
     name: "Jemimah Rodrigues",
     nation: "India",
-    role: "Top-order Batter",
+    role: "Batter",
     retired: "No",
     born: "2000-09-05",
     battingHand: "Right",
@@ -72,7 +72,7 @@ export const players = [
   {
     name: "Meg Lanning",
     nation: "Australia",
-    role: "Top-order Batter",
+    role: "Batter",
     retired: "Yes",
     born: "1992-03-25",
     battingHand: "Right",
@@ -162,7 +162,7 @@ export const players = [
   {
     name: "Danni Wyatt",
     nation: "England",
-    role: "Top-order Batter",
+    role: "Batter",
     retired: "No",
     born: "1991-04-22",
     battingHand: "Right",
@@ -172,7 +172,7 @@ export const players = [
   {
     name: "Sophia Dunkley",
     nation: "England",
-    role: "Top-order Batter",
+    role: "Batter",
     retired: "No",
     born: "1998-07-16",
     battingHand: "Right",
@@ -252,7 +252,7 @@ export const players = [
   {
     name: "Maddy Green",
     nation: "New Zealand",
-    role: "Top-order Batter",
+    role: "Batter",
     retired: "No",
     born: "1992-10-20",
     battingHand: "Right",
@@ -262,7 +262,7 @@ export const players = [
   {
     name: "Lauren Down",
     nation: "New Zealand",
-    role: "Top-order Batter",
+    role: "Batter",
     retired: "No",
     born: "1995-05-27",
     battingHand: "Right",
@@ -312,7 +312,7 @@ export const players = [
   {
     name: "Laura Wolvaardt",
     nation: "South Africa",
-    role: "Top-order Batter",
+    role: "Batter",
     retired: "No",
     born: "1999-04-26",
     battingHand: "Right",
@@ -322,7 +322,7 @@ export const players = [
   {
     name: "Mignon du Preez",
     nation: "South Africa",
-    role: "Top-order Batter",
+    role: "Batter",
     retired: "Yes",
     born: "1989-06-13",
     battingHand: "Right",
@@ -332,7 +332,7 @@ export const players = [
   {
     name: "Tazmin Brits",
     nation: "South Africa",
-    role: "Top-order Batter",
+    role: "Batter",
     retired: "No",
     born: "1991-01-08",
     battingHand: "Right",
@@ -393,7 +393,7 @@ export const players = [
   {
     name: "Bismah Maroof",
     nation: "Pakistan",
-    role: "Top-order Batter",
+    role: "Batter",
     retired: "No",
     born: "1991-07-18",
     battingHand: "Left",
@@ -403,7 +403,7 @@ export const players = [
   {
     name: "Javeria Khan",
     nation: "Pakistan",
-    role: "Top-order Batter",
+    role: "Batter",
     retired: "Yes",
     born: "1988-05-14",
     battingHand: "Right",
@@ -413,7 +413,7 @@ export const players = [
   {
     name: "Nahida Khan",
     nation: "Pakistan",
-    role: "Top-order Batter",
+    role: "Batter",
     retired: "Yes",
     born: "1986-12-03",
     battingHand: "Right",
@@ -423,7 +423,7 @@ export const players = [
   {
     name: "Sidra Ameen",
     nation: "Pakistan",
-    role: "Top-order Batter",
+    role: "Batter",
     retired: "No",
     born: "1992-04-07",
     battingHand: "Right",
@@ -497,7 +497,7 @@ players.push(
   {
     name: "Radha Yadav",
     nation: "India",
-    role: "Bowling Allrounder (Left-arm spin)",
+    role: "Left-arm spin Bowler",
     retired: "No",
     born: "2000-04-21",
     battingHand: "Right",
@@ -563,7 +563,7 @@ players.push(
   {
     name: "Priya Punia",
     nation: "India",
-    role: "Top-order Batter",
+    role: "Batter",
     retired: "No",
     born: "1996-08-06",
     battingHand: "Right",
@@ -651,7 +651,7 @@ players.push(
   {
     name: "Phoebe Litchfield",
     nation: "Australia",
-    role: "Top-order Batter",
+    role: "Batter",
     retired: "No",
     born: "2003-04-18",
     battingHand: "Left",
@@ -695,7 +695,7 @@ players.push(
   {
     name: "Harshitha Samarawickrama",
     nation: "Sri Lanka",
-    role: "Top-order Batter",
+    role: "Batter",
     retired: "No",
     born: "1998-06-29",
     battingHand: "Left",
@@ -786,7 +786,7 @@ players.push(
   {
     name: "Veda Krishnamurthy",
     nation: "India",
-    role: "Middle-order Batter",
+    role: "Batter",
     retired: "No",
     born: "1992-10-16",
     battingHand: "Right",
@@ -830,7 +830,7 @@ players.push(
   {
     name: "Maia Bouchier",
     nation: "England",
-    role: "Top-order Batter",
+    role: "Batter",
     retired: "No",
     born: "1998-12-05",
     battingHand: "Right",
@@ -932,7 +932,7 @@ players.push(
   {
     name: "Kiran Navgire",
     nation: "India",
-    role: "Power-hitter Batter",
+    role: "Batter",
     retired: "No",
     born: "1994-09-18",
     battingHand: "Right",
@@ -943,7 +943,7 @@ players.push(
   {
     name: "Mithali Raj",
     nation: "India",
-    role: "Top-order Batter",
+    role: "Batter",
     retired: "Yes",
     born: "1982-12-03",
     battingHand: "Right",
@@ -998,7 +998,7 @@ players.push(
   {
     name: "Tammy Beaumont",
     nation: "England",
-    role: "Top-order Batter",
+    role: "Batter",
     retired: "No",
     born: "1991-03-11",
     battingHand: "Right",
@@ -1020,7 +1020,7 @@ players.push(
   {
     name: "Fran Wilson",
     nation: "England",
-    role: "Middle-order Batter",
+    role: "Batter",
     retired: "Yes",
     born: "1991-11-07",
     battingHand: "Right",
@@ -1031,7 +1031,7 @@ players.push(
   {
     name: "Elyse Villani",
     nation: "Australia",
-    role: "Top-order Batter",
+    role: "Batter",
     retired: "No",
     born: "1989-10-06",
     battingHand: "Right",
@@ -1053,7 +1053,7 @@ players.push(
   {
     name: "Nicole Bolton",
     nation: "Australia",
-    role: "Top-order Batter",
+    role: "Batter",
     retired: "Yes",
     born: "1989-01-17",
     battingHand: "Left",
@@ -1064,7 +1064,7 @@ players.push(
   {
     name: "Rachael Haynes",
     nation: "Australia",
-    role: "Top-order Batter",
+    role: "Batter",
     retired: "Yes",
     born: "1986-12-26",
     battingHand: "Left",
@@ -1075,7 +1075,7 @@ players.push(
   {
     name: "Vishmi Gunaratne",
     nation: "Sri Lanka",
-    role: "Top-order Batter",
+    role: "Batter",
     retired: "No",
     born: "2005-09-24",
     battingHand: "Right",
@@ -1097,7 +1097,7 @@ players.push(
   {
     name: "Sabbhineni Meghana",
     nation: "India",
-    role: "Top-order Batter",
+    role: "Batter",
     retired: "No",
     born: "1996-06-07",
     battingHand: "Right",
@@ -1260,7 +1260,7 @@ players.push(
   {
     name: "Pratika Rawal",
     nation: "India",
-    role: "Top-order Batter",
+    role: "Batter",
     retired: "No",
     born: "2000-09-01",
     battingHand: "Right",
@@ -1342,7 +1342,7 @@ players.push(
   {
     name: "Mel Jones",
     nation: "Australia",
-    role: "Top-order Batter",
+    role: "Batter",
     retired: "Yes",
     born: "1972-08-11",
     battingHand: "Right",
@@ -1398,7 +1398,7 @@ players.push(
   {
     name: "Maia Bouchier",
     nation: "England",
-    role: "Top-order Batter",
+    role: "Batter",
     retired: "No",
     born: "1998-12-05",
     battingHand: "Right",
@@ -1409,7 +1409,7 @@ players.push(
   {
     name: "Shantha Rangaswamy",
     nation: "India",
-    role: "	Allrounder (Off spin)",
+    role: "Allrounder (Off spin)",
     retired: "Yes",
     born: "1954-01-01",
     battingHand: "Right",
@@ -1420,7 +1420,7 @@ players.push(
   {
     name: "Gaby Lewis",
     nation: "Ireland",
-    role: "Top-order Batter",
+    role: "Batter",
     retired: "No",
     born: "2001-03-27",
     battingHand: "Right",
