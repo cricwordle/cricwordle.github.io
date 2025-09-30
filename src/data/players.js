@@ -1354,7 +1354,7 @@ players.push(
     name: "Lizelle Lee",
     nation: "South Africa",
     role: "WK Batter",
-    retired: "No",
+    retired: "Yes",
     born: "1992-04-02",
     battingHand: "Right",
     totalMatches: 184,
