@@ -84,7 +84,7 @@ function ShareModal({
   };
 
   return (
-    <div className="modal-backdrop">
+    <div className="modal-backdrop" onClick={onClose}>
       <div className="modal">
         {showConfetti && (
           <Confetti width={window.innerWidth} height={window.innerHeight} />
