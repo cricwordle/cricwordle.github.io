@@ -20,16 +20,16 @@ const MAX_ATTEMPTS = 8;
 const MAX_GAMES_PER_DAY = 1;
 const DISABLE_LIMIT = false;
 
-  // const HARDCODED_PLAYER = {
-  //   name: "Amelia Kerr",
-  //   nation: "New Zealand",
-  //   role: "Bowling Allrounder (Leg spin)",
-  //   retired: "No",
-  //   born: "2000-10-13",
-  //   battingHand: "Right",
-  //   totalMatches: 162,
-  //   currentTeam: "MI",
-  // };
+// const HARDCODED_PLAYER = {
+//   name: "Amelia Kerr",
+//   nation: "New Zealand",
+//   role: "Bowling Allrounder (Leg spin)",
+//   retired: "No",
+//   born: "2000-10-13",
+//   battingHand: "Right",
+//   totalMatches: 162,
+//   currentTeam: "MI",
+// };
 
 const getContinent = (nation) => {
   const asia = [
@@ -269,8 +269,11 @@ function App() {
         return "allrounder";
       }
 
-      if (role.includes("bowler")) {
-        return "bowler";
+      if (role.includes("bowler") && role.includes("pace")) {
+        return "pace bowler";
+      }
+      if (role.includes("bowler") && role.includes("spin")) {
+        return "spin bowler";
       }
 
       if (role.includes("batter")) {
