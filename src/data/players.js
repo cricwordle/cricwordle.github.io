@@ -26,7 +26,7 @@ export const players = [
     retired: "No",
     born: "2000-09-05",
     battingHand: "Right",
-    totalMatches: 166,
+    totalMatches: 151,
     currentTeam: "DC",
   },
   {
@@ -46,7 +46,7 @@ export const players = [
     retired: "No",
     born: "2003-09-28",
     battingHand: "Right",
-    totalMatches: 61,
+    totalMatches: 113,
     currentTeam: "RCB",
   },
   {
@@ -1254,7 +1254,7 @@ players.push(
     retired: "No",
     born: "2002-07-31",
     battingHand: "Right",
-    totalMatches: 157,
+    totalMatches: 19,
     currentTeam: "RCB",
   },
   {
