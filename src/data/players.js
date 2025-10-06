@@ -1513,15 +1513,5 @@ players.push(
     battingHand: "Right",
     totalMatches: 68,
     currentTeam: "DC",
-  },
-  {
-    name: "Esha Oza",
-    nation: "UAE",
-    role: "Allrounder (Off spin)",
-    retired: "No",
-    born: "1998-08-01",
-    battingHand: "Right",
-    totalMatches: 93,
-    currentTeam: "—",
   }
 );
