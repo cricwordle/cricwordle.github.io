@@ -92,7 +92,7 @@ export const players = [
   {
     name: "Tahlia McGrath",
     nation: "Australia",
-    role: "Batting Allrounder (Right-arm pace)",
+    role: "Allrounder (Right-arm pace)",
     retired: "No",
     born: "1995-11-10",
     battingHand: "Right",
@@ -182,7 +182,7 @@ export const players = [
   {
     name: "Alice Capsey",
     nation: "England",
-    role: "Batting Allrounder (Off spin)",
+    role: "Allrounder (Off spin)",
     retired: "No",
     born: "2004-08-11",
     battingHand: "Right",
@@ -242,7 +242,7 @@ export const players = [
   {
     name: "Amelia Kerr",
     nation: "New Zealand",
-    role: "Bowling Allrounder (Leg spin)",
+    role: "Allrounder (Leg spin)",
     retired: "No",
     born: "2000-10-13",
     battingHand: "Right",
@@ -292,7 +292,7 @@ export const players = [
   {
     name: "Stafanie Taylor",
     nation: "West Indies",
-    role: "Batting Allrounder (Off spin)",
+    role: "Allrounder (Off spin)",
     retired: "No",
     born: "1991-06-11",
     battingHand: "Right",
@@ -302,7 +302,7 @@ export const players = [
   {
     name: "Hayley Matthews",
     nation: "West Indies",
-    role: "Batting Allrounder (Off spin)",
+    role: "Allrounder (Off spin)",
     retired: "No",
     born: "1998-03-19",
     battingHand: "Right",
@@ -352,7 +352,7 @@ export const players = [
   {
     name: "Chloe Tryon",
     nation: "South Africa",
-    role: "Batting Allrounder (Left-arm spin)",
+    role: "Allrounder (Left-arm spin)",
     retired: "No",
     born: "1994-01-25",
     battingHand: "Right",
@@ -629,7 +629,7 @@ players.push(
   {
     name: "Annabel Sutherland",
     nation: "Australia",
-    role: "Bowling Allrounder (Right-arm pace)",
+    role: "Allrounder (Right-arm pace)",
     retired: "No",
     born: "2001-10-12",
     battingHand: "Right",
@@ -921,7 +921,7 @@ players.push(
   {
     name: "Kanika Ahuja",
     nation: "India",
-    role: "Batting Allrounder (Off spin)",
+    role: "Allrounder (Off spin)",
     retired: "No",
     born: "2002-07-16",
     battingHand: "Left",
@@ -987,7 +987,7 @@ players.push(
   {
     name: "Nat Sciver-Brunt",
     nation: "England",
-    role: "Batting Allrounder (Right-arm pace)",
+    role: "Allrounder (Right-arm pace)",
     retired: "No",
     born: "1992-08-20",
     battingHand: "Right",
@@ -1270,7 +1270,7 @@ players.push(
   {
     name: "Kranti Gaud",
     nation: "India",
-    role: "Allrounder (Right-arm pace)",
+    role: "Right-arm pace bowler",
     retired: "No",
     born: "2003-08-11",
     battingHand: "Right",
