@@ -123,6 +123,23 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
+    <!-- Google Analytics 4: Basic User & Device Tracking -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-C77KY8YR1B"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-C77KY8YR1B", {
+        anonymize_ip: true, // privacy-friendly
+        send_page_view: true, // track pageviews automatically
+      });
+    </script>
   </head>
   <body>
     <div id="root"></div>
