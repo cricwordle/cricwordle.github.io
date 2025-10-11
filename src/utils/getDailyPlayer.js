@@ -22,8 +22,10 @@ export function getDailyPlayer() {
   // Shift current UTC time to IST
   const istNow = new Date(now.getTime() + IST_OFFSET);
 
-  // Start of the year in IST
-  const startOfYearIST = new Date(Date.UTC(istNow.getUTCFullYear(), 0, 1));
+  // Start of the year in IST (midnight IST)
+  const startOfYearIST = new Date(
+    Date.UTC(istNow.getUTCFullYear(), 0, 1) - IST_OFFSET
+  );
 
   // Difference in ms since start of year IST
   const diff = istNow.getTime() - startOfYearIST.getTime();
