@@ -329,13 +329,18 @@ function App() {
       annotated.colors.role = "grey";
     }
 
-    const bornDiff = Math.abs(
-      new Date(player.born).getFullYear() - new Date(mystery.born).getFullYear()
-    );
+    const guessYear = new Date(player.born).getFullYear();
+    const mysteryYear = new Date(mystery.born).getFullYear();
+    const bornDiff = Math.abs(guessYear - mysteryYear);
+    
     annotated.colors.born =
       bornDiff === 0 ? "green" : bornDiff <= 2 ? "orange" : "grey";
-    if (bornDiff <= 2 && bornDiff !== 0)
-      annotated.tooltips.born = "Close! Within 2 years";
+    if (bornDiff <= 2 && bornDiff !== 0) {
+      annotated.tooltips.born =
+        guessYear < mysteryYear
+          ? `Close! Born after ${guessYear}`
+          : `Close! Born before ${guessYear}`;
+    }
 
     const matchDiff = Math.abs(player.totalMatches - mystery.totalMatches);
     annotated.colors.totalMatches =
