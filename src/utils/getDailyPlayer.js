@@ -1,6 +1,6 @@
 import { players } from "../data/players.js";
 
-// Simple hash function to shuffle the day number deterministically
+// Same hash function for deterministic mixing
 function hashDay(n) {
   let h = n;
   h = ((h >> 16) ^ h) * 0x45d9f3b;
@@ -9,9 +9,22 @@ function hashDay(n) {
   return h >>> 0;
 }
 
+// Deterministic shuffle of players for the given year
+function shufflePlayers(seed) {
+  const arr = [...players];
+  let h = seed;
+  for (let i = arr.length - 1; i > 0; i--) {
+    h = hashDay(h + i);
+    const j = h % (i + 1);
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
 /**
  * Returns a deterministic "daily" player that resets at 12:00 AM IST
  * worldwide, so everyone sees the same player.
+ * No repeats until all players have appeared.
  */
 export function getDailyPlayer() {
   const now = new Date();
@@ -34,8 +47,7 @@ export function getDailyPlayer() {
   const oneDay = 1000 * 60 * 60 * 24;
   const dayOfYear = Math.floor(diff / oneDay);
 
-  // Deterministic hashed index
-  const index = hashDay(dayOfYear) % players.length;
-
-  return players[index];
+  // Shuffle once per year, pick today's player
+  const shuffled = shufflePlayers(istNow.getUTCFullYear());
+  return shuffled[dayOfYear % shuffled.length];
 }
