@@ -1047,7 +1047,7 @@ players.push(
     born: "1993-01-15",
     battingHand: "Right",
     totalMatches: 227,
-    currentTeam: "RCB",
+    currentTeam: "—",
     image: "",
   },
   {
