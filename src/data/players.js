@@ -357,7 +357,7 @@ export const players = [
     born: "1994-01-25",
     battingHand: "Right",
     totalMatches: 229,
-    currentTeam: "—",
+    currentTeam: "MI",
   },
   {
     name: "Marcia Letsoalo",

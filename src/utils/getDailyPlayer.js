@@ -1,6 +1,8 @@
 import { players } from "../data/players.js";
 
-// Same hash function for deterministic mixing
+/** 
+ * Simple deterministic hash
+ */
 function hashDay(n) {
   let h = n;
   h = ((h >> 16) ^ h) * 0x45d9f3b;
@@ -9,7 +11,9 @@ function hashDay(n) {
   return h >>> 0;
 }
 
-// Deterministic shuffle of players for the given year
+/**
+ * Deterministically shuffle players based on seed
+ */
 function shufflePlayers(seed) {
   const arr = [...players];
   let h = seed;
@@ -22,32 +26,47 @@ function shufflePlayers(seed) {
 }
 
 /**
- * Returns a deterministic "daily" player that resets at 12:00 AM IST
- * worldwide, so everyone sees the same player.
- * No repeats until all players have appeared.
+ * Get current time as IST reliably (timezone independent).
  */
-export function getDailyPlayer() {
+function getISTDate() {
   const now = new Date();
+  const localOffsetMin = now.getTimezoneOffset();  // in minutes
+  const IST_OFFSET_MIN = 330;                     // +5:30 IST
+  return new Date(
+    now.getTime() + (IST_OFFSET_MIN + localOffsetMin) * 60000
+  );
+}
 
-  // IST offset in milliseconds (+5:30)
-  const IST_OFFSET = 5.5 * 60 * 60 * 1000;
+/**
+ * Get day-of-year in IST, starting from Jan 1 00:00 IST
+ */
+function getDayOfYearIST(istNow) {
+  const IST_OFFSET_HOURS = -5.5; // to shift UTC midnight to IST midnight
 
-  // Shift current UTC time to IST
-  const istNow = new Date(now.getTime() + IST_OFFSET);
-
-  // Start of the year in IST (midnight IST)
   const startOfYearIST = new Date(
-    Date.UTC(istNow.getUTCFullYear(), 0, 1) - IST_OFFSET
+    Date.UTC(
+      istNow.getUTCFullYear(),
+      0,
+      1,
+      IST_OFFSET_HOURS         // moves UTC midnight to IST midnight
+    )
   );
 
-  // Difference in ms since start of year IST
-  const diff = istNow.getTime() - startOfYearIST.getTime();
+  const diff = istNow - startOfYearIST;
+  const oneDay = 24 * 60 * 60 * 1000;
+  return Math.floor(diff / oneDay);
+}
 
-  // Convert ms → days
-  const oneDay = 1000 * 60 * 60 * 24;
-  const dayOfYear = Math.floor(diff / oneDay);
+/**
+ * Returns the deterministic "daily" player.
+ * Resets at 12:00 AM IST for all users globally.
+ */
+export function getDailyPlayer() {
+  const istNow = getISTDate();
+  const dayOfYear = getDayOfYearIST(istNow);
 
-  // Shuffle once per year, pick today's player
-  const shuffled = shufflePlayers(istNow.getUTCFullYear());
+  // Shuffle based on IST year (stable for whole year)
+  const shuffled = shufflePlayers(istNow.getFullYear());
+
   return shuffled[dayOfYear % shuffled.length];
 }
