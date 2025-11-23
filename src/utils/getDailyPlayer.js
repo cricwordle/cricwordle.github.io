@@ -1,9 +1,9 @@
 import { players } from "../data/players.js";
 
-/** 
+/**
  * Simple deterministic hash
  */
-function hashDay(n) {
+function hashNumber(n) {
   let h = n;
   h = ((h >> 16) ^ h) * 0x45d9f3b;
   h = ((h >> 16) ^ h) * 0x45d9f3b;
@@ -12,13 +12,15 @@ function hashDay(n) {
 }
 
 /**
- * Deterministically shuffle players based on seed
+ * Deterministically shuffle players using a FIXED SEED
  */
-function shufflePlayers(seed) {
+function shufflePlayers() {
+  const seed = 123456; // constant, do NOT use year
   const arr = [...players];
   let h = seed;
+
   for (let i = arr.length - 1; i > 0; i--) {
-    h = hashDay(h + i);
+    h = hashNumber(h + i);
     const j = h % (i + 1);
     [arr[i], arr[j]] = [arr[j], arr[i]];
   }
@@ -26,47 +28,29 @@ function shufflePlayers(seed) {
 }
 
 /**
- * Get current time as IST reliably (timezone independent).
+ * Convert local time → IST
  */
 function getISTDate() {
   const now = new Date();
-  const localOffsetMin = now.getTimezoneOffset();  // in minutes
-  const IST_OFFSET_MIN = 330;                     // +5:30 IST
-  return new Date(
-    now.getTime() + (IST_OFFSET_MIN + localOffsetMin) * 60000
-  );
+  const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+  return new Date(utc + 330 * 60000);
 }
 
 /**
- * Get day-of-year in IST, starting from Jan 1 00:00 IST
+ * Get day of year in IST
  */
-function getDayOfYearIST(istNow) {
-  const IST_OFFSET_HOURS = -5.5; // to shift UTC midnight to IST midnight
-
-  const startOfYearIST = new Date(
-    Date.UTC(
-      istNow.getUTCFullYear(),
-      0,
-      1,
-      IST_OFFSET_HOURS         // moves UTC midnight to IST midnight
-    )
-  );
-
-  const diff = istNow - startOfYearIST;
-  const oneDay = 24 * 60 * 60 * 1000;
-  return Math.floor(diff / oneDay);
+function getDayOfYearIST(ist) {
+  const start = new Date(Date.UTC(ist.getUTCFullYear(), 0, 1, -5.5));
+  return Math.floor((ist - start) / 86400000);
 }
 
 /**
- * Returns the deterministic "daily" player.
- * Resets at 12:00 AM IST for all users globally.
+ * Get consistent daily player (changes at 12 AM IST)
  */
 export function getDailyPlayer() {
   const istNow = getISTDate();
   const dayOfYear = getDayOfYearIST(istNow);
 
-  // Shuffle based on IST year (stable for whole year)
-  const shuffled = shufflePlayers(istNow.getFullYear());
-
-  return shuffled[dayOfYear % shuffled.length];
+  const sorted = shufflePlayers(); // always stable
+  return sorted[dayOfYear % sorted.length];
 }
